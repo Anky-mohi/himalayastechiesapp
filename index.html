@@ -628,12 +628,7 @@
     
     <div class="container">
         <div class="header">
-           <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Himalayas Tech - Cinematic Brand Analysis</title>
+  
     <style>
         * {
             margin: 0;
@@ -757,7 +752,8 @@
             position: absolute;
             width: 70px;
             height: 70px;
-          
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -768,7 +764,7 @@
             top: 50%;
             transform: translateY(-50%);
             z-index: 10;
-            
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
         }
 
         /* Analysis Text */
@@ -796,6 +792,81 @@
             content: '✓';
             color: #00f5ff;
             margin-right: 8px;
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            opacity: 0;
+            transform: translateX(-50%) translateY(50px);
+        }
+
+        .photo-item {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.1);
+            border-color: #00f5ff;
+            box-shadow: 0 5px 20px rgba(0, 245, 255, 0.3);
+        }
+
+        .photo-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(255, 107, 53, 0.3), 
+                rgba(247, 147, 30, 0.3),
+                rgba(0, 245, 255, 0.2)
+            );
+            opacity: 0.7;
+            border-radius: 6px;
+        }
+
+        .photo-item span {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Gallery animation effects */
+        .photo-item.animate {
+            animation: photoFloat 3s ease-in-out infinite;
+        }
+
+        .photo-item:nth-child(1).animate { animation-delay: 0s; }
+        .photo-item:nth-child(2).animate { animation-delay: 0.5s; }
+        .photo-item:nth-child(3).animate { animation-delay: 1s; }
+        .photo-item:nth-child(4).animate { animation-delay: 1.5s; }
+        .photo-item:nth-child(5).animate { animation-delay: 2s; }
+
+        @keyframes photoFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-5px) rotate(2deg); }
+            66% { transform: translateY(5px) rotate(-2deg); }
         }
 
         /* Scan Beam */
@@ -862,16 +933,10 @@
                 height: 350px;
             }
         }
-        .brand-logo img {
-  width: 120px; /* adjust size */
-  height: auto;
-}
-
     </style>
-</head>
-<body>
+
     <div class="container">
-    
+        <div class="header">
             <!-- Robot -->
             <div class="robot" id="robot">
                 <div class="robot-body">
@@ -886,10 +951,7 @@
             </div>
 
             <!-- Brand Logo -->
-           <div class="brand-logo" id="brandLogo">
-  <img src="/Screenshot__167_-removebg-preview.png" alt="HT Logo">
-</div>
-
+            <div class="brand-logo" id="brandLogo">HT</div>
 
             <!-- Scan Beam -->
             <div class="scan-beam" id="scanBeam"></div>
@@ -901,9 +963,24 @@
                 <div class="analysis-item" id="item3">Typography Analyzed</div>
                 <div class="analysis-item" id="item4">Analysis Complete</div>
             </div>
+
+            <!-- Photo Gallery -->
+            <div class="photo-gallery" id="photoGallery">
+                <div class="photo-item" id="photo1"><span>🏔️</span></div>
+                <div class="photo-item" id="photo2"><span>💻</span></div>
+                <div class="photo-item" id="photo3"><span>🎨</span></div>
+                <div class="photo-item" id="photo4"><span>🚀</span></div>
+                <div class="photo-item" id="photo5"><span>⚡</span></div>
+            </div>
         </div>
 
-        
+        <div class="form-content">
+            <div class="demo-section">
+                <h3>AI-Powered Brand Analysis</h3>
+                <p>Watch our AI system analyze your brand elements in real-time, then see the robot and your brand logo interact playfully after the analysis is complete.</p>
+                <button class="restart-btn" onclick="startAnimation()">Watch Animation</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -917,13 +994,16 @@
             const brandLogo = document.getElementById('brandLogo');
             const scanBeam = document.getElementById('scanBeam');
             const analysisText = document.getElementById('analysisText');
+            const photoGallery = document.getElementById('photoGallery');
             const items = ['item1', 'item2', 'item3', 'item4'];
+            const photos = ['photo1', 'photo2', 'photo3', 'photo4', 'photo5'];
 
             // Reset positions
             robot.style.transition = 'none';
             brandLogo.style.transition = 'none';
             scanBeam.style.transition = 'none';
             analysisText.style.transition = 'none';
+            photoGallery.style.transition = 'none';
             
             robot.style.left = '-100px';
             brandLogo.style.right = '-100px';
@@ -931,10 +1011,16 @@
             scanBeam.style.opacity = '0';
             analysisText.style.opacity = '0';
             analysisText.style.transform = 'translateY(80px)';
+            photoGallery.style.opacity = '0';
+            photoGallery.style.transform = 'translateX(-50%) translateY(50px)';
 
             items.forEach(id => {
                 document.getElementById(id).style.opacity = '0';
                 document.getElementById(id).style.transform = 'translateX(30px)';
+            });
+
+            photos.forEach(id => {
+                document.getElementById(id).classList.remove('animate');
             });
 
             // Force reflow
@@ -1015,10 +1101,26 @@
 
             }, 10000);
 
+            // 11s: Show photo gallery
+            setTimeout(() => {
+                photoGallery.style.transition = 'all 1.5s ease-out';
+                photoGallery.style.opacity = '1';
+                photoGallery.style.transform = 'translateX(-50%) translateY(0px)';
+                
+                // Add floating animation to each photo
+                setTimeout(() => {
+                    photos.forEach((id, index) => {
+                        setTimeout(() => {
+                            document.getElementById(id).classList.add('animate');
+                        }, index * 200);
+                    });
+                }, 500);
+            }, 11000);
+
             // Reset animation flag after complete cycle
             setTimeout(() => {
                 isAnimating = false;
-            }, 15000);
+            }, 18000);
         }
 
         // Auto-start animation when page loads
@@ -1026,9 +1128,8 @@
             setTimeout(startAnimation, 500);
         });
     </script>
-</body>
-</html>
-        
+
+        </div>
 
         <form class="form-content" id="designBrief" action="https://api.web3forms.com/submit" method="POST">
             <!-- Web3Forms Hidden Fields -->

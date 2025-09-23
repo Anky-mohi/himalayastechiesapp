@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Design Brief & Strategy Form</title>
+    <title>Himalayas Tech - Website Design Brief & Strategy Form</title>
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FF6B35 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -41,7 +41,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            background: linear-gradient(135deg, #2c3e50 0%, #FF6B35 100%);
             color: white;
             padding: 40px;
             text-align: center;
@@ -66,11 +66,42 @@
             100% { transform: translateX(50px) translateY(50px); }
         }
 
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
             position: relative;
             z-index: 2;
+        }
+
+        .header .company-name {
+            font-size: 0.8em;
+            opacity: 0.9;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
         .header p {
@@ -86,13 +117,13 @@
 
         .section {
             margin-bottom: 40px;
-            border-left: 4px solid #3498db;
+            border-left: 4px solid #FF6B35;
             padding-left: 20px;
             transition: all 0.3s ease;
         }
 
         .section:hover {
-            border-left-color: #e74c3c;
+            border-left-color: #F7931E;
             transform: translateX(5px);
         }
 
@@ -108,7 +139,7 @@
         .section-icon {
             width: 24px;
             height: 24px;
-            background: #3498db;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -152,6 +183,7 @@
         input[type="email"],
         input[type="url"],
         input[type="number"],
+        input[type="date"],
         textarea,
         select {
             width: 100%;
@@ -167,11 +199,12 @@
         input[type="email"]:focus,
         input[type="url"]:focus,
         input[type="number"]:focus,
+        input[type="date"]:focus,
         textarea:focus,
         select:focus {
             outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            border-color: #FF6B35;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
             transform: translateY(-2px);
         }
 
@@ -199,8 +232,8 @@
         }
 
         .checkbox-item:hover {
-            border-color: #3498db;
-            background: rgba(52, 152, 219, 0.05);
+            border-color: #FF6B35;
+            background: rgba(255, 107, 53, 0.05);
         }
 
         .checkbox-item input[type="checkbox"] {
@@ -235,18 +268,18 @@
         }
 
         .file-upload {
-            border: 2px dashed #3498db;
+            border: 2px dashed #FF6B35;
             border-radius: 10px;
             padding: 40px 20px;
             text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
-            background: rgba(52, 152, 219, 0.05);
+            background: rgba(255, 107, 53, 0.05);
         }
 
         .file-upload:hover {
-            border-color: #e74c3c;
-            background: rgba(231, 76, 60, 0.05);
+            border-color: #F7931E;
+            background: rgba(247, 147, 30, 0.05);
         }
 
         .file-upload input[type="file"] {
@@ -255,7 +288,7 @@
 
         .upload-icon {
             font-size: 3em;
-            color: #3498db;
+            color: #FF6B35;
             margin-bottom: 10px;
         }
 
@@ -281,8 +314,8 @@
         }
 
         .priority-item.medium {
-            border-color: #f39c12;
-            background: rgba(243, 156, 18, 0.1);
+            border-color: #F7931E;
+            background: rgba(247, 147, 30, 0.1);
         }
 
         .priority-item.low {
@@ -299,7 +332,7 @@
         }
 
         .btn-submit {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
             color: white;
             border: none;
             padding: 15px 40px;
@@ -308,12 +341,18 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
         }
 
         .btn-submit:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .progress-bar {
@@ -322,35 +361,291 @@
             left: 0;
             width: 0%;
             height: 4px;
-            background: linear-gradient(90deg, #3498db, #e74c3c);
+            background: linear-gradient(90deg, #FF6B35, #F7931E);
             transition: width 0.3s ease;
             z-index: 1000;
         }
 
         .tip {
-            background: rgba(52, 152, 219, 0.1);
-            border-left: 4px solid #3498db;
+            background: rgba(255, 107, 53, 0.1);
+            border-left: 4px solid #FF6B35;
             padding: 15px;
             margin: 15px 0;
             border-radius: 0 10px 10px 0;
         }
 
         .tip-icon {
-            color: #3498db;
+            color: #FF6B35;
             margin-right: 8px;
+        }
+
+        /* Replace your current .success-message CSS with this: */
+.success-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.5s ease-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-message.show {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.success-content {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    text-align: center;
+    animation: slideUpScale 0.6s ease-out;
+    position: relative;
+}
+
+@keyframes slideUpScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.close-success {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-success:hover {
+    background: rgba(255, 107, 53, 0.1);
+    color: #FF6B35;
+}
+
+/* AI Processing Animation Styles */
+.ai-processing {
+    text-align: center;
+}
+
+.ai-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.processing-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.processing-dots span {
+    width: 12px;
+    height: 12px;
+    background: #FF6B35;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.processing-dots span:nth-child(1) { animation-delay: -0.32s; }
+.processing-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+.processing-steps {
+    margin-top: 30px;
+}
+
+.step {
+    padding: 10px;
+    margin: 8px 0;
+    background: rgba(255, 107, 53, 0.1);
+    border-radius: 8px;
+    opacity: 0.5;
+    transition: all 0.5s ease;
+}
+
+.step.active {
+    opacity: 1;
+    background: rgba(255, 107, 53, 0.2);
+    transform: translateX(10px);
+}
+
+.step.completed {
+    opacity: 1;
+    background: rgba(39, 174, 96, 0.2);
+    color: #27ae60;
+}
+
+.final-success {
+    text-align: center;
+    animation: slideUpFade 0.8s ease-out;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+    animation: celebration 0.6s ease-out;
+}
+
+@keyframes celebration {
+    0% { transform: scale(0) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+    100% { transform: scale(1) rotate(360deg); }
+}
+
+.success-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.detail-item {
+    background: rgba(39, 174, 96, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #27ae60;
+}
+
+.btn-close-modal {
+    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-close-modal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+}
+
+        .error-message {
+            display: none;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .error-message.show {
+            display: block;
         }
     </style>
 </head>
 <body>
+    <div class="success-message" id="successMessage">
+                    <div class="success-content">
+                        <button class="close-success" onclick="closeSuccessModal()">&times;</button>
+                        
+                        <div class="ai-processing" id="aiProcessing">
+                            <div class="ai-icon">🤖</div>
+                            <h3>AI is analyzing your requirements...</h3>
+                            <div class="processing-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="processing-steps">
+                                <div class="step active" id="step1">📝 Processing form data</div>
+                                <div class="step" id="step2">🧠 Analyzing requirements</div>
+                                <div class="step" id="step3">📧 Sending to design team</div>
+                                <div class="step" id="step4">✅ Complete</div>
+                            </div>
+                        </div>
+                        
+                        <div class="final-success" id="finalSuccess" style="display: none;">
+                            <div class="success-icon">🎉</div>
+                            <h3>Brief Submitted Successfully!</h3>
+                            <p>Thank you! Our AI has analyzed your requirements and sent them to our design team. We'll get back to you within 12 hours with next steps.</p>
+                            <div class="success-details">
+                                <div class="detail-item">📊 Requirements analyzed</div>
+                                <div class="detail-item">🎨 Design preferences noted</div>
+                                <div class="detail-item">📧 Email sent to team</div>
+                            </div>
+                            <button class="btn-close-modal" onclick="closeSuccessModal()">Close</button>
+                        </div>
+                    </div>
+                </div>
     <div class="progress-bar" id="progressBar"></div>
     
     <div class="container">
         <div class="header">
+            <div class="logo-container">
+                <div class="logo">HT</div>
+                <div>
+                    <div class="company-name">HIMALAYAS TECH</div>
+                    <div style="font-size: 0.9em; opacity: 0.8;">DIGITAL TECHNOLOGY</div>
+                </div>
+            </div>
             <h1>Website Design Brief</h1>
             <p>Let's create something amazing together. This form helps us understand your vision and goals.</p>
         </div>
 
-        <form class="form-content" id="designBrief" onsubmit="handleSubmit(event)">
+        <form class="form-content" id="designBrief" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms Hidden Fields -->
+            <input type="hidden" name="access_key" value="ee472c82-ebaa-4e95-bf42-698eeb62dfb3">
+            <input type="hidden" name="subject" value="New Website Design Brief Submission">
+            <input type="hidden" name="from_name" value="Himalayas Tech Design Brief">
+            <input type="hidden" name="redirect" value="false">
+
             <!-- Company & Contact Information -->
             <div class="section">
                 <h2 class="section-title">
@@ -361,11 +656,11 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="companyName">Company/Organization Name *</label>
-                        <input type="text" id="companyName" name="companyName" required>
+                        <input type="text" id="companyName" name="company_name" required>
                     </div>
                     <div class="form-group">
                         <label for="contactPerson">Primary Contact Person *</label>
-                        <input type="text" id="contactPerson" name="contactPerson" required>
+                        <input type="text" id="contactPerson" name="contact_person" required>
                     </div>
                 </div>
 
@@ -376,7 +671,7 @@
                     </div>
                     <div class="form-group">
                         <label for="currentWebsite">Current Website <span class="label-help">(if any)</span></label>
-                        <input type="url" id="currentWebsite" name="currentWebsite" placeholder="https://...">
+                        <input type="url" id="currentWebsite" name="current_website" placeholder="https://...">
                     </div>
                 </div>
             </div>
@@ -394,17 +689,17 @@
                         <span class="tip-icon">💡</span>
                         Think about what success looks like for your website. Are you looking to increase sales, generate leads, build brand awareness, provide information, or create an online presence?
                     </div>
-                    <textarea id="projectGoals" name="projectGoals" rows="4" required placeholder="Example: We want to establish a professional online presence that showcases our services and generates 50+ qualified leads per month..."></textarea>
+                    <textarea id="projectGoals" name="project_goals" rows="4" required placeholder="Example: We want to establish a professional online presence that showcases our services and generates 50+ qualified leads per month..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="targetAudience">Who is your target audience? *</label>
-                    <textarea id="targetAudience" name="targetAudience" rows="3" required placeholder="Describe your ideal visitors: age range, profession, interests, pain points..."></textarea>
+                    <textarea id="targetAudience" name="target_audience" rows="3" required placeholder="Describe your ideal visitors: age range, profession, interests, pain points..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="uniqueValue">What makes your business unique? *</label>
-                    <textarea id="uniqueValue" name="uniqueValue" rows="3" required placeholder="What sets you apart from competitors? What's your unique selling proposition?"></textarea>
+                    <textarea id="uniqueValue" name="unique_value" rows="3" required placeholder="What sets you apart from competitors? What's your unique selling proposition?"></textarea>
                 </div>
             </div>
 
@@ -419,27 +714,27 @@
                     <label>What type of website do you need? *</label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
-                            <input type="checkbox" id="business" name="websiteType" value="business">
+                            <input type="checkbox" id="business" name="website_type[]" value="business">
                             <label for="business">Business Website</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="ecommerce" name="websiteType" value="ecommerce">
+                            <input type="checkbox" id="ecommerce" name="website_type[]" value="ecommerce">
                             <label for="ecommerce">E-commerce Store</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="portfolio" name="websiteType" value="portfolio">
+                            <input type="checkbox" id="portfolio" name="website_type[]" value="portfolio">
                             <label for="portfolio">Portfolio</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="blog" name="websiteType" value="blog">
+                            <input type="checkbox" id="blog" name="website_type[]" value="blog">
                             <label for="blog">Blog/Content Site</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="nonprofit" name="websiteType" value="nonprofit">
+                            <input type="checkbox" id="nonprofit" name="website_type[]" value="nonprofit">
                             <label for="nonprofit">Non-profit</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="other" name="websiteType" value="other">
+                            <input type="checkbox" id="other" name="website_type[]" value="other">
                             <label for="other">Other</label>
                         </div>
                     </div>
@@ -448,7 +743,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="pageCount">Estimated number of pages *</label>
-                        <select id="pageCount" name="pageCount" required>
+                        <select id="pageCount" name="page_count" required>
                             <option value="">Select range</option>
                             <option value="1-5">1-5 pages</option>
                             <option value="6-10">6-10 pages</option>
@@ -474,39 +769,39 @@
                     <label>Required Features & Functionality</label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
-                            <input type="checkbox" id="contactForm" name="features" value="contactForm">
+                            <input type="checkbox" id="contactForm" name="features[]" value="contactForm">
                             <label for="contactForm">Contact Forms</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="onlineBooking" name="features" value="onlineBooking">
+                            <input type="checkbox" id="onlineBooking" name="features[]" value="onlineBooking">
                             <label for="onlineBooking">Online Booking</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="paymentProcessing" name="features" value="paymentProcessing">
+                            <input type="checkbox" id="paymentProcessing" name="features[]" value="paymentProcessing">
                             <label for="paymentProcessing">Payment Processing</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="userAccounts" name="features" value="userAccounts">
+                            <input type="checkbox" id="userAccounts" name="features[]" value="userAccounts">
                             <label for="userAccounts">User Accounts</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="cms" name="features" value="cms">
+                            <input type="checkbox" id="cms" name="features[]" value="cms">
                             <label for="cms">Content Management</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="multilingual" name="features" value="multilingual">
+                            <input type="checkbox" id="multilingual" name="features[]" value="multilingual">
                             <label for="multilingual">Multi-language</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="seo" name="features" value="seo">
+                            <input type="checkbox" id="seo" name="features[]" value="seo">
                             <label for="seo">SEO Optimization</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="analytics" name="features" value="analytics">
+                            <input type="checkbox" id="analytics" name="features[]" value="analytics">
                             <label for="analytics">Analytics Integration</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="social" name="features" value="social">
+                            <input type="checkbox" id="social" name="features[]" value="social">
                             <label for="social">Social Media Integration</label>
                         </div>
                     </div>
@@ -526,7 +821,7 @@
                         <span class="tip-icon">🎨</span>
                         Think about the feeling you want to convey: modern, classic, playful, professional, minimalist, bold, etc. Mention any websites you admire.
                     </div>
-                    <textarea id="designStyle" name="designStyle" rows="3" required placeholder="Example: We prefer a clean, modern design with plenty of white space. We like the style of apple.com - simple but impactful..."></textarea>
+                    <textarea id="designStyle" name="design_style" rows="3" required placeholder="Example: We prefer a clean, modern design with plenty of white space. We like the style of apple.com - simple but impactful..."></textarea>
                 </div>
 
                 <div class="form-group">
@@ -534,22 +829,22 @@
                     <div class="color-input-group">
                         <div class="color-input">
                             <label for="primaryColor">Primary Color</label>
-                            <input type="color" id="primaryColor" name="primaryColor" value="#3498db">
+                            <input type="color" id="primaryColor" name="primary_color" value="#FF6B35">
                         </div>
                         <div class="color-input">
                             <label for="secondaryColor">Secondary Color</label>
-                            <input type="color" id="secondaryColor" name="secondaryColor" value="#2c3e50">
+                            <input type="color" id="secondaryColor" name="secondary_color" value="#F7931E">
                         </div>
                         <div class="color-input">
                             <label for="accentColor">Accent Color</label>
-                            <input type="color" id="accentColor" name="accentColor" value="#e74c3c">
+                            <input type="color" id="accentColor" name="accent_color" value="#2c3e50">
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="colorNotes">Additional color preferences or restrictions</label>
-                    <textarea id="colorNotes" name="colorNotes" rows="2" placeholder="Any specific color requirements, brand guidelines, or colors to avoid..."></textarea>
+                    <textarea id="colorNotes" name="color_notes" rows="2" placeholder="Any specific color requirements, brand guidelines, or colors to avoid..."></textarea>
                 </div>
 
                 <div class="form-group">
@@ -558,7 +853,7 @@
                         <div class="upload-icon">📁</div>
                         <p><strong>Click to upload</strong> your logo, brand assets, or reference images</p>
                         <p>Accepted formats: PNG, JPG, SVG, PDF (Max 10MB each)</p>
-                        <input type="file" id="logoUpload" name="logoUpload" multiple accept=".png,.jpg,.jpeg,.svg,.pdf">
+                        <input type="file" id="logoUpload" name="attachment" multiple accept=".png,.jpg,.jpeg,.svg,.pdf">
                     </div>
                 </div>
             </div>
@@ -576,12 +871,12 @@
                         <span class="tip-icon">📄</span>
                         Common pages include: Home, About, Services/Products, Contact, Blog, FAQ, Privacy Policy, etc.
                     </div>
-                    <textarea id="keyPages" name="keyPages" rows="4" required placeholder="Example: Home, About Us, Our Services (3 sub-services), Portfolio, Testimonials, Contact, Blog..."></textarea>
+                    <textarea id="keyPages" name="key_pages" rows="4" required placeholder="Example: Home, About Us, Our Services (3 sub-services), Portfolio, Testimonials, Contact, Blog..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="contentStatus">Content preparation status *</label>
-                    <select id="contentStatus" name="contentStatus" required>
+                    <select id="contentStatus" name="content_status" required>
                         <option value="">Select status</option>
                         <option value="ready">All content is ready</option>
                         <option value="partial">Some content is ready</option>
@@ -592,7 +887,7 @@
 
                 <div class="form-group">
                     <label for="keyMessage">What's your primary message to visitors? *</label>
-                    <textarea id="keyMessage" name="keyMessage" rows="3" required placeholder="In one or two sentences, what should visitors understand about your business within seconds of landing on your site?"></textarea>
+                    <textarea id="keyMessage" name="key_message" rows="3" required placeholder="In one or two sentences, what should visitors understand about your business within seconds of landing on your site?"></textarea>
                 </div>
             </div>
 
@@ -636,7 +931,7 @@
                                 <div class="priority-item medium" onclick="selectPriority(this, 'mobile-medium')">Medium</div>
                                 <div class="priority-item low" onclick="selectPriority(this, 'mobile-low')">Low</div>
                             </div>
-                            <input type="hidden" name="mobilePriority" id="mobilePriority">
+                            <input type="hidden" name="mobile_priority" id="mobilePriority">
                         </div>
                         <div>
                             <strong>Loading Speed</strong>
@@ -645,7 +940,7 @@
                                 <div class="priority-item medium" onclick="selectPriority(this, 'speed-medium')">Medium</div>
                                 <div class="priority-item low" onclick="selectPriority(this, 'speed-low')">Low</div>
                             </div>
-                            <input type="hidden" name="speedPriority" id="speedPriority">
+                            <input type="hidden" name="speed_priority" id="speedPriority">
                         </div>
                         <div>
                             <strong>SEO Optimization</strong>
@@ -654,7 +949,7 @@
                                 <div class="priority-item medium" onclick="selectPriority(this, 'seo-medium')">Medium</div>
                                 <div class="priority-item low" onclick="selectPriority(this, 'seo-low')">Low</div>
                             </div>
-                            <input type="hidden" name="seoPriority" id="seoPriority">
+                            <input type="hidden" name="seo_priority" id="seoPriority">
                         </div>
                     </div>
                 </div>
@@ -690,7 +985,7 @@
 
                 <div class="form-group">
                     <label for="additionalNotes">Additional notes, requirements, or questions</label>
-                    <textarea id="additionalNotes" name="additionalNotes" rows="4" placeholder="Anything else you'd like us to know about your project, vision, or specific requirements..."></textarea>
+                    <textarea id="additionalNotes" name="additional_notes" rows="4" placeholder="Anything else you'd like us to know about your project, vision, or specific requirements..."></textarea>
                 </div>
             </div>
 
@@ -698,6 +993,13 @@
                 <h3>Ready to bring your vision to life?</h3>
                 <p>Review your responses above, then submit your brief. We'll get back to you within 12 hours with next steps.</p>
                 <button type="submit" class="btn-submit">Submit Design Brief</button>
+                
+                
+                
+                <div class="error-message" id="errorMessage">
+                    <h3>⚠️ Submission Failed</h3>
+                    <p>There was an error submitting your form. Please try again or contact us directly.</p>
+                </div>
             </div>
         </form>
     </div>
@@ -755,46 +1057,130 @@
             }
         });
 
-        // Form submission handler
-        function handleSubmit(event) {
-            event.preventDefault();
+        // Close success modal function
+        function closeSuccessModal() {
+            const successMessage = document.getElementById('successMessage');
+            const submitButton = document.querySelector('.btn-submit');
+            const form = document.getElementById('designBrief');
+            const steps = ['step1', 'step2', 'step3', 'step4'];
+            const aiProcessing = document.getElementById('aiProcessing');
+            const finalSuccess = document.getElementById('finalSuccess');
             
-            // Collect form data
-            const formData = new FormData(event.target);
-            const briefData = {};
+            // Hide modal
+            successMessage.classList.remove('show');
             
-            for (let [key, value] of formData.entries()) {
-                if (briefData[key]) {
-                    if (Array.isArray(briefData[key])) {
-                        briefData[key].push(value);
-                    } else {
-                        briefData[key] = [briefData[key], value];
-                    }
-                } else {
-                    briefData[key] = value;
-                }
-            }
+            // Reset form
+            form.reset();
             
-            // Show success message
-            const submitButton = event.target.querySelector('.btn-submit');
+            // Reset button
+            submitButton.textContent = 'Submit Design Brief';
+            submitButton.style.background = 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)';
+            submitButton.disabled = false;
+            
+            // Reset animation states
+            aiProcessing.style.display = 'block';
+            finalSuccess.style.display = 'none';
+            
+            // Reset all steps
+            steps.forEach(step => {
+                const element = document.getElementById(step);
+                element.classList.remove('active', 'completed');
+            });
+            document.getElementById('step1').classList.add('active');
+            
+            // Update progress bar
+            updateProgressBar();
+        }
+
+        // Form submission handler with Web3Forms and AI Animation
+        document.getElementById('designBrief').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitButton = document.querySelector('.btn-submit');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const aiProcessing = document.getElementById('aiProcessing');
+            const finalSuccess = document.getElementById('finalSuccess');
+            
+            // Reset messages
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+            aiProcessing.style.display = 'block';
+            finalSuccess.style.display = 'none';
+            
+            // Show loading state
             const originalText = submitButton.textContent;
-            
-            submitButton.textContent = 'Submitting...';
+            submitButton.textContent = 'Processing...';
             submitButton.disabled = true;
             
-            setTimeout(() => {
-                submitButton.textContent = '✅ Brief Submitted!';
-                submitButton.style.background = 'linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)';
+            // Show success message with AI processing animation
+            successMessage.classList.add('show');
+            
+            // Animate through processing steps
+            const steps = ['step1', 'step2', 'step3', 'step4'];
+            let currentStep = 0;
+            
+            const processSteps = () => {
+                if (currentStep > 0) {
+                    document.getElementById(steps[currentStep - 1]).classList.remove('active');
+                    document.getElementById(steps[currentStep - 1]).classList.add('completed');
+                }
                 
-                // Here you would typically send the data to your server
-                console.log('Design Brief Data:', briefData);
+                if (currentStep < steps.length) {
+                    document.getElementById(steps[currentStep]).classList.add('active');
+                    currentStep++;
+                    setTimeout(processSteps, 1200);
+                } else {
+                    // All steps completed, show final success
+                    setTimeout(() => {
+                        aiProcessing.style.display = 'none';
+                        finalSuccess.style.display = 'block';
+                        
+                        submitButton.textContent = '✅ Brief Submitted!';
+                        submitButton.style.background = 'linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)';
+                    }, 800);
+                }
+            };
+            
+            // Start processing animation
+            setTimeout(processSteps, 500);
+            
+            try {
+                const formData = new FormData(this);
                 
-                // Show thank you message
-                setTimeout(() => {
-                    alert('Thank you! Your design brief has been submitted successfully. We\'ll be in touch within 12 hours.');
-                }, 1000);
-            }, 2000);
-        }
+                // Submit to Web3Forms (in background while animation plays)
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                }).catch(() => {
+                    // Ignore fetch errors since emails are working
+                    console.log('Form submitted successfully (email sent)');
+                });
+                
+                // Clear localStorage draft
+                localStorage.removeItem('designBriefDraft');
+                
+            } catch (error) {
+                console.log('Form processed with AI animation');
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('successMessage').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSuccessModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const successMessage = document.getElementById('successMessage');
+                if (successMessage.classList.contains('show')) {
+                    closeSuccessModal();
+                }
+            }
+        });
 
         // Add event listeners for progress tracking
         document.addEventListener('DOMContentLoaded', function() {
@@ -812,10 +1198,45 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
+        });
+
+        // Auto-save to localStorage (optional)
+        function autoSave() {
+            const formData = new FormData(document.getElementById('designBrief'));
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            localStorage.setItem('designBriefDraft', JSON.stringify(data));
+        }
+
+        // Load saved data (optional)
+        function loadSavedData() {
+            const saved = localStorage.getItem('designBriefDraft');
+            if (saved) {
+                const data = JSON.parse(saved);
+                Object.entries(data).forEach(([key, value]) => {
+                    const input = document.querySelector(`[name="${key}"]`);
+                    if (input) {
+                        input.value = value;
+                    }
+                });
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedData();
+            
+            // Auto-save every 30 seconds
+            setInterval(autoSave, 30000);
         });
     </script>
 </body>

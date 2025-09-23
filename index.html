@@ -628,16 +628,408 @@
     
     <div class="container">
         <div class="header">
-            <div class="logo-container">
-                <div class="logo">HT</div>
-                <div>
-                    <div class="company-name">HIMALAYAS TECH</div>
-                    <div style="font-size: 0.9em; opacity: 0.8;">DIGITAL TECHNOLOGY</div>
+           <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himalayas Tech - Cinematic Brand Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FF6B35 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Grid background */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridFloat 20s linear infinite;
+        }
+
+        @keyframes gridFloat {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+
+        /* Robot */
+        .robot {
+            position: absolute;
+            width: 70px;
+            height: 80px;
+            left: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .robot-body {
+            width: 50px;
+            height: 60px;
+            background: linear-gradient(145deg, #667eea, #764ba2);
+            border-radius: 12px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .robot-head {
+            width: 35px;
+            height: 25px;
+            background: linear-gradient(145deg, #764ba2, #667eea);
+            border-radius: 15px 15px 5px 5px;
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .robot-eyes {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+        }
+
+        .robot-eye {
+            width: 5px;
+            height: 5px;
+            background: #00f5ff;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #00f5ff;
+        }
+
+        .robot-screen {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 18px;
+            background: #000;
+            border-radius: 3px;
+            border: 2px solid #667eea;
+        }
+
+        /* Brand Logo */
+        .brand-logo {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Analysis Text */
+        .analysis-text {
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translateY(80px);
+            z-index: 15;
+            opacity: 0;
+        }
+
+        .analysis-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            margin-bottom: 6px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+
+        .analysis-item::before {
+            content: '✓';
+            color: #00f5ff;
+            margin-right: 8px;
+        }
+
+        /* Scan Beam */
+        .scan-beam {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                rgba(0, 245, 255, 1), 
+                rgba(0, 245, 255, 0.8), 
+                rgba(0, 245, 255, 0)
+            );
+            transform: translateY(-50%);
+            z-index: 5;
+            opacity: 0;
+            box-shadow: 0 0 15px rgba(0, 245, 255, 0.6);
+        }
+
+        /* Form Content */
+        .form-content {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .demo-section h3 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .demo-section p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .restart-btn {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .restart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 20px;
+                height: 350px;
+            }
+        }
+        .brand-logo img {
+  width: 120px; /* adjust size */
+  height: auto;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+    
+            <!-- Robot -->
+            <div class="robot" id="robot">
+                <div class="robot-body">
+                    <div class="robot-head">
+                        <div class="robot-eyes">
+                            <div class="robot-eye"></div>
+                            <div class="robot-eye"></div>
+                        </div>
+                    </div>
+                    <div class="robot-screen"></div>
                 </div>
             </div>
-            <h1>Website Design Brief</h1>
-            <p>Let's create something amazing together. This form helps us understand your vision and goals.</p>
+
+            <!-- Brand Logo -->
+           <div class="brand-logo" id="brandLogo">
+  <img src="/Screenshot__167_-removebg-preview.png" alt="HT Logo">
+</div>
+
+
+            <!-- Scan Beam -->
+            <div class="scan-beam" id="scanBeam"></div>
+
+            <!-- Analysis Text -->
+            <div class="analysis-text" id="analysisText">
+                <div class="analysis-item" id="item1">Brand Identity Scanned</div>
+                <div class="analysis-item" id="item2">Colors Extracted</div>
+                <div class="analysis-item" id="item3">Typography Analyzed</div>
+                <div class="analysis-item" id="item4">Analysis Complete</div>
+            </div>
         </div>
+
+        
+    </div>
+
+    <script>
+        let isAnimating = false;
+
+        function startAnimation() {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            const robot = document.getElementById('robot');
+            const brandLogo = document.getElementById('brandLogo');
+            const scanBeam = document.getElementById('scanBeam');
+            const analysisText = document.getElementById('analysisText');
+            const items = ['item1', 'item2', 'item3', 'item4'];
+
+            // Reset positions
+            robot.style.transition = 'none';
+            brandLogo.style.transition = 'none';
+            scanBeam.style.transition = 'none';
+            analysisText.style.transition = 'none';
+            
+            robot.style.left = '-100px';
+            brandLogo.style.right = '-100px';
+            scanBeam.style.width = '0';
+            scanBeam.style.opacity = '0';
+            analysisText.style.opacity = '0';
+            analysisText.style.transform = 'translateY(80px)';
+
+            items.forEach(id => {
+                document.getElementById(id).style.opacity = '0';
+                document.getElementById(id).style.transform = 'translateX(30px)';
+            });
+
+            // Force reflow
+            robot.offsetHeight;
+
+            // 0-2s: Robot enters
+            setTimeout(() => {
+                robot.style.transition = 'all 2s cubic-bezier(0.4, 0, 0.2, 1)';
+                robot.style.left = '60px';
+            }, 0);
+
+            // 1.5-3s: Brand logo enters  
+            setTimeout(() => {
+                brandLogo.style.transition = 'all 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                brandLogo.style.right = '60px';
+                analysisText.style.transition = 'all 1s ease';
+                analysisText.style.opacity = '1';
+                analysisText.style.transform = 'translateY(-50%)';
+            }, 1500);
+
+            // 2-6s: Scan beam
+            setTimeout(() => {
+                scanBeam.style.transition = 'all 1s ease';
+                scanBeam.style.width = '200px';
+                scanBeam.style.opacity = '1';
+                scanBeam.style.left = '130px';
+            }, 2000);
+
+            setTimeout(() => {
+                scanBeam.style.opacity = '0';
+            }, 6000);
+
+            // 2.5-4s: Analysis items appear
+            setTimeout(() => {
+                items.forEach((id, index) => {
+                    setTimeout(() => {
+                        const item = document.getElementById(id);
+                        item.style.transition = 'all 0.5s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateX(0)';
+                    }, index * 400);
+                });
+            }, 2500);
+
+            // 8s: Robot moves to brand
+            setTimeout(() => {
+                robot.style.transition = 'all 2s ease-in-out';
+                robot.style.left = '300px';
+                robot.style.transform = 'translateY(-50%) scale(1.3)';
+                
+                brandLogo.style.transition = 'all 2s ease-in-out';
+                brandLogo.style.right = '150px';
+                brandLogo.style.transform = 'translateY(-50%) scale(1.4)';
+                
+                // Fade analysis text
+                analysisText.style.transition = 'all 1s ease';
+                analysisText.style.opacity = '0';
+            }, 8000);
+
+            // 10s: Start playing
+            setTimeout(() => {
+                // Robot playful animation
+                setInterval(() => {
+                    if (!isAnimating) return;
+                    robot.style.transition = 'all 0.8s ease-in-out';
+                    robot.style.transform = 'translateY(-50%) scale(1.3) rotate(' + (Math.random() * 20 - 10) + 'deg)';
+                }, 1600);
+
+                // Brand logo playful animation  
+                setInterval(() => {
+                    if (!isAnimating) return;
+                    brandLogo.style.transition = 'all 1s ease-in-out';
+                    const scale = 1.2 + Math.random() * 0.4;
+                    const rotate = Math.random() * 30 - 15;
+                    brandLogo.style.transform = `translateY(-50%) scale(${scale}) rotate(${rotate}deg)`;
+                    brandLogo.style.borderRadius = (10 + Math.random() * 20) + 'px';
+                }, 2000);
+
+            }, 10000);
+
+            // Reset animation flag after complete cycle
+            setTimeout(() => {
+                isAnimating = false;
+            }, 15000);
+        }
+
+        // Auto-start animation when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(startAnimation, 500);
+        });
+    </script>
+</body>
+</html>
+        
 
         <form class="form-content" id="designBrief" action="https://api.web3forms.com/submit" method="POST">
             <!-- Web3Forms Hidden Fields -->

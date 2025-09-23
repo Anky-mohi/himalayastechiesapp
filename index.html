@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Himalayas Tech - Kit de Criação de Sites</title>
+    <title>Website Design Brief & Strategy Form</title>
     <style>
         * {
             margin: 0;
@@ -12,53 +12,38 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #1a1a1a;
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ff8c42 50%, #ff6b35 75%, #f7931e 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         .container {
-            max-width: 1600px;
+            max-width: 900px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 25px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15), 0 10px 25px rgba(0,0,0,0.1);
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
             overflow: hidden;
-            backdrop-filter: blur(10px);
-            position: relative;
+            animation: slideUp 0.8s ease-out;
         }
 
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #ff6b35, #f7931e, #ff8c42);
-            animation: shimmer 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes shimmer {
-            0% { opacity: 0.7; }
-            100% { opacity: 1; }
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
         }
 
         .header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
             color: white;
-            padding: 60px 50px;
+            padding: 40px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -67,1008 +52,771 @@
         .header::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ff6b35" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: float 20s infinite linear;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .logo {
-            width: 100px;
-            height: 100px;
-            position: relative;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid rgba(255, 107, 53, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-            border-color: #ff6b35;
-        }
-
-        .logo-placeholder {
-            font-size: 2rem;
-            color: #ff6b35;
-            font-weight: bold;
-        }
-
-        .brand-text {
-            text-align: left;
-        }
-
-        .brand-name {
-            font-size: 3.2rem;
-            font-weight: 800;
-            letter-spacing: -2px;
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-
-        .brand-tagline {
-            font-size: 1.2rem;
-            color: #cccccc;
-            font-weight: 400;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(50px) translateY(50px); }
         }
 
         .header h1 {
-            font-size: 2.6rem;
-            margin-bottom: 20px;
-            font-weight: 300;
+            font-size: 2.5em;
+            margin-bottom: 10px;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         .header p {
-            font-size: 1.4rem;
+            font-size: 1.2em;
             opacity: 0.9;
             position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
+            z-index: 2;
         }
 
-        .content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            min-height: 900px;
+        .form-content {
+            padding: 40px;
         }
 
-        .checklist-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 60px 50px;
-            position: relative;
-            overflow-y: auto;
-            max-height: 900px;
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            transition: all 0.3s ease;
         }
 
-        .checklist-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, transparent, #ff6b35, transparent);
-        }
-
-        .form-section {
-            padding: 60px 50px;
-            background: white;
-            overflow-y: auto;
-            max-height: 900px;
+        .section:hover {
+            border-left-color: #e74c3c;
+            transform: translateX(5px);
         }
 
         .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            color: #1a1a1a;
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            position: sticky;
-            top: 0;
-            background: inherit;
-            padding: 20px 0;
-            z-index: 10;
+            gap: 10px;
         }
 
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 3px;
-            background: linear-gradient(90deg, #ff6b35, transparent);
-            border-radius: 1.5px;
-        }
-
-        .checklist-item {
-            margin-bottom: 30px;
-            padding: 30px;
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            border-left: 6px solid #ff6b35;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .checklist-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.02) 0%, rgba(247, 147, 30, 0.02) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .checklist-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.15);
-        }
-
-        .checklist-item:hover::before {
-            opacity: 1;
-        }
-
-        .checklist-item h3 {
-            color: #1a1a1a;
-            margin-bottom: 18px;
-            font-size: 1.4rem;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-        }
-
-        .checklist-item ul {
-            list-style: none;
-            position: relative;
-            z-index: 1;
-        }
-
-        .checklist-item li {
-            padding: 10px 0;
-            position: relative;
-            padding-left: 30px;
-            font-size: 1.05rem;
-            color: #4a4a4a;
-            transition: color 0.3s ease;
-        }
-
-        .checklist-item li:before {
-            content: "▶";
-            color: #ff6b35;
+        .section-icon {
+            width: 24px;
+            height: 24px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
             font-weight: bold;
-            position: absolute;
-            left: 0;
-            top: 10px;
-            font-size: 0.9rem;
         }
 
         .form-group {
-            margin-bottom: 35px;
-            position: relative;
+            margin-bottom: 20px;
         }
 
-        .form-group label {
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        label {
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             font-weight: 600;
-            color: #1a1a1a;
-            font-size: 1.05rem;
+            color: #2c3e50;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
+        .label-help {
+            font-weight: normal;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        input[type="number"],
+        textarea,
+        select {
             width: 100%;
-            padding: 18px 22px;
-            border: 2px solid #e1e5e9;
-            border-radius: 14px;
-            font-size: 1.05rem;
+            padding: 12px 16px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            font-size: 16px;
             transition: all 0.3s ease;
-            background: #fafbfc;
-            font-family: inherit;
+            background: white;
         }
 
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
             outline: none;
-            border-color: #ff6b35;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
             transform: translateY(-2px);
         }
 
-        .form-section-header {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white;
-            padding: 25px 30px;
-            margin: -60px -50px 40px -50px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            box-shadow: 0 3px 15px rgba(255, 107, 53, 0.2);
-        }
-
-        .form-section-header:first-child {
-            margin-top: -60px;
+        textarea {
+            resize: vertical;
+            min-height: 100px;
         }
 
         .checkbox-group {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .checkbox-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: #fafbfc;
-            border-radius: 12px;
-            border: 2px solid transparent;
+            gap: 8px;
+            padding: 10px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .checkbox-item:hover {
-            background: #f1f3f5;
-            border-color: #ff6b35;
-            transform: translateY(-2px);
+            border-color: #3498db;
+            background: rgba(52, 152, 219, 0.05);
         }
 
         .checkbox-item input[type="checkbox"] {
             width: auto;
-            transform: scale(1.4);
-            accent-color: #ff6b35;
         }
 
-        .checkbox-item label {
-            margin: 0;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 1rem;
+        .color-input-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
         }
 
-        .upload-btn {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white;
-            padding: 18px 30px;
+        .color-input {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        input[type="color"] {
+            width: 60px;
+            height: 60px;
             border: none;
-            border-radius: 14px;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 1.05rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
-            width: 100%;
+            transition: transform 0.2s ease;
         }
 
-        .upload-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        input[type="color"]:hover {
+            transform: scale(1.1);
         }
 
-        .submit-btn {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            padding: 25px 60px;
-            border: none;
-            border-radius: 18px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 40px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.3), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(26, 26, 26, 0.3);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.8;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Success message */
-        .success-message {
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 20px;
+        .file-upload {
+            border: 2px dashed #3498db;
+            border-radius: 10px;
+            padding: 40px 20px;
             text-align: center;
-            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        .file-upload:hover {
+            border-color: #e74c3c;
+            background: rgba(231, 76, 60, 0.05);
+        }
+
+        .file-upload input[type="file"] {
             display: none;
         }
 
-        /* Custom scrollbar */
-        .checklist-section::-webkit-scrollbar,
-        .form-section::-webkit-scrollbar {
-            width: 10px;
+        .upload-icon {
+            font-size: 3em;
+            color: #3498db;
+            margin-bottom: 10px;
         }
 
-        .checklist-section::-webkit-scrollbar-track,
-        .form-section::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 5px;
+        .priority-matrix {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
         }
 
-        .checklist-section::-webkit-scrollbar-thumb,
-        .form-section::-webkit-scrollbar-thumb {
-            background: #ff6b35;
-            border-radius: 5px;
-        }
-
-        .checklist-section::-webkit-scrollbar-thumb:hover,
-        .form-section::-webkit-scrollbar-thumb:hover {
-            background: #e55a2b;
-        }
-
-        /* Floating animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* WhatsApp contact info */
-        .whatsapp-info {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25d366;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-            font-weight: 600;
-            z-index: 1000;
+        .priority-item {
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .whatsapp-info:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        .priority-item.high {
+            border-color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
         }
 
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .container {
-                max-width: 1200px;
-            }
-            
-            .header {
-                padding: 50px 40px;
-            }
-            
-            .checklist-section, .form-section {
-                padding: 50px 40px;
-            }
-
-            .form-section-header {
-                margin: -50px -40px 35px -40px;
-                padding: 22px 25px;
-            }
+        .priority-item.medium {
+            border-color: #f39c12;
+            background: rgba(243, 156, 18, 0.1);
         }
 
-        @media (max-width: 1024px) {
-            .content {
-                grid-template-columns: 1fr;
-            }
-            
-            .checklist-section {
-                border-right: none;
-                border-bottom: 2px solid #e9ecef;
-                max-height: none;
-            }
-
-            .checklist-section::before {
-                display: none;
-            }
-
-            .form-section {
-                max-height: none;
-            }
+        .priority-item.low {
+            border-color: #27ae60;
+            background: rgba(39, 174, 96, 0.1);
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                border-radius: 20px;
-            }
-            
-            .header {
-                padding: 40px 30px;
-            }
-            
-            .logo-container {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .brand-name {
-                font-size: 2.4rem;
-                text-align: center;
-            }
-
-            .brand-tagline {
-                font-size: 1rem;
-                text-align: center;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .header p {
-                font-size: 1.2rem;
-            }
-            
-            .checklist-section, .form-section {
-                padding: 40px 25px;
-            }
-
-            .form-section-header {
-                margin: -40px -25px 30px -25px;
-                padding: 20px 25px;
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .checkbox-group {
-                grid-template-columns: 1fr;
-            }
-
-            .submit-btn {
-                padding: 20px 45px;
-                font-size: 1.2rem;
-            }
-
-            .whatsapp-info {
-                bottom: 15px;
-                right: 15px;
-                padding: 12px 18px;
-                font-size: 0.9rem;
-            }
+        .submit-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
         }
 
-        @media (max-width: 480px) {
-            .logo {
-                width: 80px;
-                height: 80px;
-            }
+        .btn-submit {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
+        }
 
-            .brand-name {
-                font-size: 2rem;
-            }
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
 
-            .checklist-item {
-                padding: 25px;
-            }
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #e74c3c);
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
 
-            .form-group input, .form-group textarea, .form-group select {
-                padding: 15px 18px;
-                font-size: 1rem;
-            }
+        .tip {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
 
-            .checklist-section, .form-section {
-                padding: 30px 20px;
-            }
-
-            .form-section-header {
-                margin: -30px -20px 25px -20px;
-                padding: 18px 20px;
-                font-size: 1.1rem;
-            }
+        .tip-icon {
+            color: #3498db;
+            margin-right: 8px;
         }
     </style>
 </head>
 <body>
+    <div class="progress-bar" id="progressBar"></div>
+    
     <div class="container">
         <div class="header">
-            <div class="logo-container floating">
-                <div class="logo">
-                    <!-- Placeholder for logo - you can replace this with your actual logo -->
-                    <div class="logo-placeholder">HT</div>
-                </div>
-                <div class="brand-text">
-                    <div class="brand-name">HIMALAYAS TECH</div>
-                    <div class="brand-tagline">TECNOLOGIA DIGITAL</div>
-                </div>
-            </div>
-            <h1>Kit de Criação de Sites</h1>
-            <p>Checklist profissional e sistema de coleta de informações do cliente para projetos premium de desenvolvimento web</p>
+            <h1>Website Design Brief</h1>
+            <p>Let's create something amazing together. This form helps us understand your vision and goals.</p>
         </div>
 
-        <div class="content">
-            <div class="checklist-section">
-                <h2 class="section-title">📝 Checklist de Desenvolvimento</h2>
+        <form class="form-content" id="designBrief" onsubmit="handleSubmit(event)">
+            <!-- Company & Contact Information -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">1</span>
+                    Company & Contact Information
+                </h2>
                 
-                <div class="checklist-item">
-                    <h3>1. Informações Iniciais</h3>
-                    <ul>
-                        <li>Nome da empresa / marca</li>
-                        <li>Detalhes de contato</li>
-                        <li>Objetivos de negócio para o site</li>
-                        <li>Principais concorrentes / inspirações</li>
-                    </ul>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="companyName">Company/Organization Name *</label>
+                        <input type="text" id="companyName" name="companyName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactPerson">Primary Contact Person *</label>
+                        <input type="text" id="contactPerson" name="contactPerson" required>
+                    </div>
                 </div>
 
-                <div class="checklist-item">
-                    <h3>2. Escopo e Estrutura</h3>
-                    <ul>
-                        <li>Número de páginas</li>
-                        <li>Seções desejadas (Início, Sobre, Serviços, Contato, Blog, etc.)</li>
-                        <li>Funcionalidades extras (formulários, e-commerce, agendamento, chat, etc.)</li>
-                    </ul>
-                </div>
-
-                <div class="checklist-item">
-                    <h3>3. Preferências de Design</h3>
-                    <ul>
-                        <li>Logotipo e cores da marca</li>
-                        <li>Fontes tipográficas</li>
-                        <li>Referências de estilo (links ou capturas de tela)</li>
-                    </ul>
-                </div>
-
-                <div class="checklist-item">
-                    <h3>4. Conteúdo</h3>
-                    <ul>
-                        <li>Conteúdo de texto pronto ou a ser criado</li>
-                        <li>Imagens / vídeos fornecidos ou a serem obtidos</li>
-                        <li>Idioma(s)</li>
-                    </ul>
-                </div>
-
-                <div class="checklist-item">
-                    <h3>5. Integrações</h3>
-                    <ul>
-                        <li>Links de redes sociais</li>
-                        <li>Gateway de pagamento</li>
-                        <li>Ferramentas de CRM / email marketing</li>
-                    </ul>
-                </div>
-
-                <div class="checklist-item">
-                    <h3>6. Cronograma e Investimento</h3>
-                    <ul>
-                        <li>Data de lançamento desejada</li>
-                        <li>Etapas de entrega</li>
-                        <li>Marcos de pagamento</li>
-                    </ul>
-                </div>
-
-                <div class="checklist-item">
-                    <h3>7. Feedback e Aprovação</h3>
-                    <ul>
-                        <li>Quem irá revisar cada etapa</li>
-                        <li>Prazos para feedback</li>
-                    </ul>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="currentWebsite">Current Website <span class="label-help">(if any)</span></label>
+                        <input type="url" id="currentWebsite" name="currentWebsite" placeholder="https://...">
+                    </div>
                 </div>
             </div>
 
-            <div class="form-section">
-                <h2 class="section-title">📋 Formulário de Coleta de Informações</h2>
+            <!-- Project Objectives -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">2</span>
+                    Project Objectives & Goals
+                </h2>
+                
+                <div class="form-group">
+                    <label for="projectGoals">What are the main objectives of this website? *</label>
+                    <div class="tip">
+                        <span class="tip-icon">💡</span>
+                        Think about what success looks like for your website. Are you looking to increase sales, generate leads, build brand awareness, provide information, or create an online presence?
+                    </div>
+                    <textarea id="projectGoals" name="projectGoals" rows="4" required placeholder="Example: We want to establish a professional online presence that showcases our services and generates 50+ qualified leads per month..."></textarea>
+                </div>
 
-                <form id="clientForm">
-                    <div class="form-section-header">Seção 1 – Informações de Contato</div>
-                    <div class="form-group">
-                        <label for="name">Nome Completo *</label>
-                        <input type="text" id="name" name="name" required placeholder="Digite seu nome completo">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Endereço de E-mail *</label>
-                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Número de Telefone</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+55 (11) 99999-9999">
-                    </div>
+                <div class="form-group">
+                    <label for="targetAudience">Who is your target audience? *</label>
+                    <textarea id="targetAudience" name="targetAudience" rows="3" required placeholder="Describe your ideal visitors: age range, profession, interests, pain points..."></textarea>
+                </div>
 
-                    <div class="form-section-header">Seção 2 – Informações da Empresa</div>
-                    <div class="form-group">
-                        <label for="company">Nome da Empresa *</label>
-                        <input type="text" id="company" name="company" required placeholder="Nome da sua empresa">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Descrição do Negócio *</label>
-                        <textarea id="description" name="description" rows="4" required placeholder="Conte-nos sobre seu negócio, o que você faz e seu mercado-alvo..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="goal">Objetivo Principal do Site *</label>
-                        <textarea id="goal" name="goal" rows="3" required placeholder="O que você quer alcançar com seu site? (ex: gerar leads, vender produtos, construir consciência da marca...)"></textarea>
-                    </div>
+                <div class="form-group">
+                    <label for="uniqueValue">What makes your business unique? *</label>
+                    <textarea id="uniqueValue" name="uniqueValue" rows="3" required placeholder="What sets you apart from competitors? What's your unique selling proposition?"></textarea>
+                </div>
+            </div>
 
-                    <div class="form-section-header">Seção 3 – Design e Marca</div>
-                    <div class="form-group">
-                        <label for="colors">Cores da Marca</label>
-                        <input type="text" id="colors" name="colors" placeholder="ex: Principal: #FF6B35, Secundária: #F7931E, ou descreva as cores preferidas">
-                    </div>
-                    <div class="form-group">
-                        <label for="logo">Upload do Logotipo</label>
-                        <input type="file" id="logo" name="logo" accept="image/*" class="upload-btn">
-                    </div>
-                    <div class="form-group">
-                        <label for="references">Referências de Sites</label>
-                        <textarea id="references" name="references" rows="3" placeholder="Compartilhe URLs de sites que você gosta e explique o que te atrai neles..."></textarea>
-                    </div>
+            <!-- Website Specifications -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">3</span>
+                    Website Specifications & Features
+                </h2>
 
-                    <div class="form-section-header">Seção 4 – Funcionalidades Necessárias</div>
-                    <div class="form-group">
-                        <label>Selecione todas as funcionalidades que você precisa:</label>
-                        <div class="checkbox-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="store" name="features" value="loja-online">
-                                <label for="store">Loja Online (E-commerce)</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="booking" name="features" value="sistema-agendamento">
-                                <label for="booking">Sistema de Agendamento</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="blog" name="features" value="blog">
-                                <label for="blog">Seção Blog/Notícias</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="contact" name="features" value="formularios-contato">
-                                <label for="contact">Formulários de Contato</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="gallery" name="features" value="galeria-fotos">
-                                <label for="gallery">Galeria de Fotos</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="seo" name="features" value="otimizacao-seo">
-                                <label for="seo">Otimização SEO</label>
-                            </div>
+                <div class="form-group">
+                    <label>What type of website do you need? *</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="business" name="websiteType" value="business">
+                            <label for="business">Business Website</label>
                         </div>
-                        <div class="form-group" style="margin-top: 25px;">
-                            <label for="other">Funcionalidades Adicionais</label>
-                            <input type="text" id="other" name="other" placeholder="Especifique quaisquer outras funcionalidades que você precisa...">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="ecommerce" name="websiteType" value="ecommerce">
+                            <label for="ecommerce">E-commerce Store</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="portfolio" name="websiteType" value="portfolio">
+                            <label for="portfolio">Portfolio</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="blog" name="websiteType" value="blog">
+                            <label for="blog">Blog/Content Site</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="nonprofit" name="websiteType" value="nonprofit">
+                            <label for="nonprofit">Non-profit</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="other" name="websiteType" value="other">
+                            <label for="other">Other</label>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-section-header">Seção 5 – Cronograma e Investimento do Projeto</div>
+                <div class="form-row">
                     <div class="form-group">
-                        <label for="launch">Data de Lançamento Desejada</label>
-                        <input type="date" id="launch" name="launch">
-                    </div>
-                    <div class="form-group">
-                        <label for="budget">Faixa de Investimento do Projeto *</label>
-                        <select id="budget" name="budget" required>
-                            <option value="">Selecione sua faixa de investimento</option>
-                            <option value="ate-5k">Até R$ 5.000</option>
-                            <option value="5k-15k">R$ 5.000 - R$ 15.000</option>
-                            <option value="15k-30k">R$ 15.000 - R$ 30.000</option>
-                            <option value="30k-75k">R$ 30.000 - R$ 75.000</option>
-                            <option value="75k-150k">R$ 75.000 - R$ 150.000</option>
-                            <option value="acima-150k">Acima de R$ 150.000</option>
+                        <label for="pageCount">Estimated number of pages *</label>
+                        <select id="pageCount" name="pageCount" required>
+                            <option value="">Select range</option>
+                            <option value="1-5">1-5 pages</option>
+                            <option value="6-10">6-10 pages</option>
+                            <option value="11-20">11-20 pages</option>
+                            <option value="21-50">21-50 pages</option>
+                            <option value="50+">50+ pages</option>
                         </select>
                     </div>
-
-                    <button type="submit" class="submit-btn">
-                        Enviar Detalhes do Projeto
-                        <span style="margin-left: 12px;">🚀</span>
-                    </button>
-
-                    <div class="success-message" id="successMessage">
-                        ✅ Informações enviadas com sucesso! Nossa equipe entrará em contato em breve.
+                    <div class="form-group">
+                        <label for="budget">Project Budget Range</label>
+                        <select id="budget" name="budget">
+                            <option value="">Prefer not to say</option>
+                            <option value="under-2k">Under $2,000</option>
+                            <option value="2k-5k">$2,000 - $5,000</option>
+                            <option value="5k-10k">$5,000 - $10,000</option>
+                            <option value="10k-25k">$10,000 - $25,000</option>
+                            <option value="25k+">$25,000+</option>
+                        </select>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
+                </div>
 
-    <div class="whatsapp-info">
-        📱 WhatsApp: (98) 7256-7925
+                <div class="form-group">
+                    <label>Required Features & Functionality</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contactForm" name="features" value="contactForm">
+                            <label for="contactForm">Contact Forms</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="onlineBooking" name="features" value="onlineBooking">
+                            <label for="onlineBooking">Online Booking</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="paymentProcessing" name="features" value="paymentProcessing">
+                            <label for="paymentProcessing">Payment Processing</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="userAccounts" name="features" value="userAccounts">
+                            <label for="userAccounts">User Accounts</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cms" name="features" value="cms">
+                            <label for="cms">Content Management</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="multilingual" name="features" value="multilingual">
+                            <label for="multilingual">Multi-language</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="seo" name="features" value="seo">
+                            <label for="seo">SEO Optimization</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="analytics" name="features" value="analytics">
+                            <label for="analytics">Analytics Integration</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="social" name="features" value="social">
+                            <label for="social">Social Media Integration</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design & Visual Identity -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">4</span>
+                    Design & Visual Identity
+                </h2>
+
+                <div class="form-group">
+                    <label for="designStyle">Describe your preferred design style *</label>
+                    <div class="tip">
+                        <span class="tip-icon">🎨</span>
+                        Think about the feeling you want to convey: modern, classic, playful, professional, minimalist, bold, etc. Mention any websites you admire.
+                    </div>
+                    <textarea id="designStyle" name="designStyle" rows="3" required placeholder="Example: We prefer a clean, modern design with plenty of white space. We like the style of apple.com - simple but impactful..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Brand Colors</label>
+                    <div class="color-input-group">
+                        <div class="color-input">
+                            <label for="primaryColor">Primary Color</label>
+                            <input type="color" id="primaryColor" name="primaryColor" value="#3498db">
+                        </div>
+                        <div class="color-input">
+                            <label for="secondaryColor">Secondary Color</label>
+                            <input type="color" id="secondaryColor" name="secondaryColor" value="#2c3e50">
+                        </div>
+                        <div class="color-input">
+                            <label for="accentColor">Accent Color</label>
+                            <input type="color" id="accentColor" name="accentColor" value="#e74c3c">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="colorNotes">Additional color preferences or restrictions</label>
+                    <textarea id="colorNotes" name="colorNotes" rows="2" placeholder="Any specific color requirements, brand guidelines, or colors to avoid..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Logo & Artwork Upload</label>
+                    <div class="file-upload" onclick="document.getElementById('logoUpload').click()">
+                        <div class="upload-icon">📁</div>
+                        <p><strong>Click to upload</strong> your logo, brand assets, or reference images</p>
+                        <p>Accepted formats: PNG, JPG, SVG, PDF (Max 10MB each)</p>
+                        <input type="file" id="logoUpload" name="logoUpload" multiple accept=".png,.jpg,.jpeg,.svg,.pdf">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content & Messaging -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">5</span>
+                    Content & Messaging
+                </h2>
+
+                <div class="form-group">
+                    <label for="keyPages">List the key pages/sections your website needs *</label>
+                    <div class="tip">
+                        <span class="tip-icon">📄</span>
+                        Common pages include: Home, About, Services/Products, Contact, Blog, FAQ, Privacy Policy, etc.
+                    </div>
+                    <textarea id="keyPages" name="keyPages" rows="4" required placeholder="Example: Home, About Us, Our Services (3 sub-services), Portfolio, Testimonials, Contact, Blog..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="contentStatus">Content preparation status *</label>
+                    <select id="contentStatus" name="contentStatus" required>
+                        <option value="">Select status</option>
+                        <option value="ready">All content is ready</option>
+                        <option value="partial">Some content is ready</option>
+                        <option value="help-needed">Need help creating content</option>
+                        <option value="professional-needed">Need professional copywriting</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="keyMessage">What's your primary message to visitors? *</label>
+                    <textarea id="keyMessage" name="keyMessage" rows="3" required placeholder="In one or two sentences, what should visitors understand about your business within seconds of landing on your site?"></textarea>
+                </div>
+            </div>
+
+            <!-- Technical Requirements -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">6</span>
+                    Technical Requirements & Preferences
+                </h2>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hosting">Hosting Preference</label>
+                        <select id="hosting" name="hosting">
+                            <option value="">No preference</option>
+                            <option value="client-managed">I'll handle hosting</option>
+                            <option value="designer-recommended">Recommend hosting solution</option>
+                            <option value="designer-managed">Manage hosting for me</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="platform">Platform Preference</label>
+                        <select id="platform" name="platform">
+                            <option value="">No preference</option>
+                            <option value="wordpress">WordPress</option>
+                            <option value="custom">Custom HTML/CSS/JS</option>
+                            <option value="shopify">Shopify</option>
+                            <option value="squarespace">Squarespace</option>
+                            <option value="other">Other (specify in notes)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Priority Level for:</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
+                        <div>
+                            <strong>Mobile Responsiveness</strong>
+                            <div class="priority-matrix">
+                                <div class="priority-item high" onclick="selectPriority(this, 'mobile-high')">High</div>
+                                <div class="priority-item medium" onclick="selectPriority(this, 'mobile-medium')">Medium</div>
+                                <div class="priority-item low" onclick="selectPriority(this, 'mobile-low')">Low</div>
+                            </div>
+                            <input type="hidden" name="mobilePriority" id="mobilePriority">
+                        </div>
+                        <div>
+                            <strong>Loading Speed</strong>
+                            <div class="priority-matrix">
+                                <div class="priority-item high" onclick="selectPriority(this, 'speed-high')">High</div>
+                                <div class="priority-item medium" onclick="selectPriority(this, 'speed-medium')">Medium</div>
+                                <div class="priority-item low" onclick="selectPriority(this, 'speed-low')">Low</div>
+                            </div>
+                            <input type="hidden" name="speedPriority" id="speedPriority">
+                        </div>
+                        <div>
+                            <strong>SEO Optimization</strong>
+                            <div class="priority-matrix">
+                                <div class="priority-item high" onclick="selectPriority(this, 'seo-high')">High</div>
+                                <div class="priority-item medium" onclick="selectPriority(this, 'seo-medium')">Medium</div>
+                                <div class="priority-item low" onclick="selectPriority(this, 'seo-low')">Low</div>
+                            </div>
+                            <input type="hidden" name="seoPriority" id="seoPriority">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline & Additional Information -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">7</span>
+                    Timeline & Additional Information
+                </h2>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="timeline">Desired Launch Date</label>
+                        <input type="date" id="timeline" name="timeline">
+                    </div>
+                    <div class="form-group">
+                        <label for="urgency">Project Urgency</label>
+                        <select id="urgency" name="urgency">
+                            <option value="">Select urgency</option>
+                            <option value="rush">Rush (2-4 weeks)</option>
+                            <option value="standard">Standard (6-8 weeks)</option>
+                            <option value="flexible">Flexible (2-3 months)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="competitors">Key competitors or similar websites</label>
+                    <textarea id="competitors" name="competitors" rows="3" placeholder="List 3-5 competitor websites or sites you admire. What do you like/dislike about them?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalNotes">Additional notes, requirements, or questions</label>
+                    <textarea id="additionalNotes" name="additionalNotes" rows="4" placeholder="Anything else you'd like us to know about your project, vision, or specific requirements..."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <h3>Ready to bring your vision to life?</h3>
+                <p>Review your responses above, then submit your brief. We'll get back to you within 12 hours with next steps.</p>
+                <button type="submit" class="btn-submit">Submit Design Brief</button>
+            </div>
+        </form>
     </div>
 
     <script>
-        // Enhanced form submission with WhatsApp integration
-        document.getElementById('clientForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Progress bar functionality
+        function updateProgressBar() {
+            const form = document.getElementById('designBrief');
+            const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
+            let completed = 0;
             
-            const submitBtn = this.querySelector('.submit-btn');
-            const successMessage = document.getElementById('successMessage');
-            const originalText = submitBtn.innerHTML;
+            inputs.forEach(input => {
+                if (input.type === 'checkbox' || input.type === 'radio') {
+                    const group = form.querySelectorAll(`input[name="${input.name}"]`);
+                    if (Array.from(group).some(item => item.checked)) {
+                        completed++;
+                    }
+                } else if (input.value.trim() !== '') {
+                    completed++;
+                }
+            });
             
-            // Show loading state
-            submitBtn.innerHTML = 'Processando... ⏳';
-            submitBtn.disabled = true;
+            const progress = (completed / inputs.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Priority selection functionality
+        function selectPriority(element, type) {
+            const container = element.parentElement;
+            container.querySelectorAll('.priority-item').forEach(item => {
+                item.style.opacity = '0.5';
+                item.style.transform = 'scale(0.95)';
+            });
+            
+            element.style.opacity = '1';
+            element.style.transform = 'scale(1.05)';
+            
+            const [field, level] = type.split('-');
+            document.getElementById(field + 'Priority').value = level;
+        }
+
+        // File upload display
+        document.getElementById('logoUpload').addEventListener('change', function(e) {
+            const fileUpload = document.querySelector('.file-upload');
+            const files = e.target.files;
+            
+            if (files.length > 0) {
+                fileUpload.innerHTML = `
+                    <div class="upload-icon">✅</div>
+                    <p><strong>${files.length} file(s) selected</strong></p>
+                    <p>Click to change files</p>
+                `;
+                fileUpload.style.borderColor = '#27ae60';
+                fileUpload.style.background = 'rgba(39, 174, 96, 0.1)';
+            }
+        });
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
             
             // Collect form data
-            const formData = new FormData(this);
-            const data = {};
+            const formData = new FormData(event.target);
+            const briefData = {};
             
-            // Handle regular inputs and checkboxes
-            for (let// Collect form data
-            const formData = new FormData(this);
-            const data = {};
-            
-            // Handle regular inputs and checkboxes
             for (let [key, value] of formData.entries()) {
-                if (data[key]) {
-                    // If key already exists, convert to array
-                    if (Array.isArray(data[key])) {
-                        data[key].push(value);
+                if (briefData[key]) {
+                    if (Array.isArray(briefData[key])) {
+                        briefData[key].push(value);
                     } else {
-                        data[key] = [data[key], value];
+                        briefData[key] = [briefData[key], value];
                     }
                 } else {
-                    data[key] = value;
+                    briefData[key] = value;
                 }
             }
             
-            // Format features as a readable list
-            if (data.features) {
-                const features = Array.isArray(data.features) ? data.features : [data.features];
-                data.features = features.join(', ');
-            }
+            // Show success message
+            const submitButton = event.target.querySelector('.btn-submit');
+            const originalText = submitButton.textContent;
             
-            // Create WhatsApp message
-            const whatsappMessage = createWhatsAppMessage(data);
+            submitButton.textContent = 'Submitting...';
+            submitButton.disabled = true;
             
-            // Simulate processing delay
             setTimeout(() => {
-                // Show success message
-                successMessage.style.display = 'block';
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                submitButton.textContent = '✅ Brief Submitted!';
+                submitButton.style.background = 'linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)';
                 
-                // Reset button
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
+                // Here you would typically send the data to your server
+                console.log('Design Brief Data:', briefData);
                 
-                // Auto-open WhatsApp after 2 seconds
+                // Show thank you message
                 setTimeout(() => {
-                    const whatsappURL = `https://wa.me/+919872567925?text=${encodeURIComponent(whatsappMessage)}`;
-                    window.open(whatsappURL, '_blank');
-                }, 2000);
-                
-                // Reset form after 5 seconds
-                setTimeout(() => {
-                    this.reset();
-                    successMessage.style.display = 'none';
-                }, 5000);
-                
+                    alert('Thank you! Your design brief has been submitted successfully. We\'ll be in touch within 12 hours.');
+                }, 1000);
             }, 2000);
-        });
-        
-        function createWhatsAppMessage(data) {
-            let message = `🚀 *NOVO PROJETO - HIMALAYAS TECH*\n\n`;
-            
-            message += `📝 *INFORMAÇÕES DE CONTATO*\n`;
-            message += `• Nome: ${data.name || 'Não informado'}\n`;
-            message += `• Email: ${data.email || 'Não informado'}\n`;
-            message += `• Telefone: ${data.phone || 'Não informado'}\n\n`;
-            
-            message += `🏢 *INFORMAÇÕES DA EMPRESA*\n`;
-            message += `• Empresa: ${data.company || 'Não informado'}\n`;
-            message += `• Descrição: ${data.description || 'Não informado'}\n`;
-            message += `• Objetivo: ${data.goal || 'Não informado'}\n\n`;
-            
-            message += `🎨 *DESIGN E MARCA*\n`;
-            message += `• Cores: ${data.colors || 'Não especificado'}\n`;
-            message += `• Referências: ${data.references || 'Não informado'}\n\n`;
-            
-            if (data.features) {
-                message += `⚡ *FUNCIONALIDADES*\n`;
-                message += `• ${data.features}\n`;
-                if (data.other) {
-                    message += `• Adicionais: ${data.other}\n`;
-                }
-                message += `\n`;
-            }
-            
-            message += `📅 *CRONOGRAMA E INVESTIMENTO*\n`;
-            message += `• Data de lançamento: ${data.launch || 'Flexível'}\n`;
-            message += `• Investimento: ${data.budget || 'A definir'}\n\n`;
-            
-            message += `✅ Cliente preencheu formulário completo no site da Himalayas Tech`;
-            
-            return message;
         }
-        
-        // Enhanced animations and interactions
+
+        // Add event listeners for progress tracking
         document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scroll for internal links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
+            const inputs = document.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.addEventListener('change', updateProgressBar);
+                input.addEventListener('input', updateProgressBar);
             });
             
-            // Add hover effects to form elements
-            const formElements = document.querySelectorAll('input, textarea, select');
-            formElements.forEach(element => {
-                element.addEventListener('focus', function() {
-                    this.parentElement.style.transform = 'translateY(-2px)';
-                    this.parentElement.style.transition = 'transform 0.3s ease';
-                });
-                
-                element.addEventListener('blur', function() {
-                    this.parentElement.style.transform = 'translateY(0)';
-                });
-            });
-            
-            // Animate checklist items on scroll
-            const checklistItems = document.querySelectorAll('.checklist-item');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-            
-            checklistItems.forEach(item => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(30px)';
-                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(item);
-            });
-            
-            // Add ripple effect to buttons
-            const buttons = document.querySelectorAll('.submit-btn, .upload-btn');
-            buttons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-                    
-                    const ripple = document.createElement('div');
-                    ripple.style.cssText = `
-                        position: absolute;
-                        width: ${size}px;
-                        height: ${size}px;
-                        left: ${x}px;
-                        top: ${y}px;
-                        background: rgba(255, 255, 255, 0.3);
-                        border-radius: 50%;
-                        transform: scale(0);
-                        animation: ripple 0.6s ease-out;
-                        pointer-events: none;
-                    `;
-                    
-                    this.style.position = 'relative';
-                    this.style.overflow = 'hidden';
-                    this.appendChild(ripple);
-                    
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
-            });
-            
-            // Form validation enhancements
-            const requiredFields = document.querySelectorAll('input[required], textarea[required], select[required]');
-            requiredFields.forEach(field => {
-                field.addEventListener('invalid', function() {
-                    this.style.borderColor = '#e74c3c';
-                    this.style.boxShadow = '0 0 0 4px rgba(231, 76, 60, 0.1)';
-                });
-                
-                field.addEventListener('input', function() {
-                    if (this.validity.valid) {
-                        this.style.borderColor = '#27ae60';
-                        this.style.boxShadow = '0 0 0 4px rgba(39, 174, 96, 0.1)';
-                    } else {
-                        this.style.borderColor = '#e1e5e9';
-                        this.style.boxShadow = 'none';
-                    }
-                });
-            });
-            
-            // WhatsApp contact animation
-            const whatsappInfo = document.querySelector('.whatsapp-info');
-            if (whatsappInfo) {
-                whatsappInfo.addEventListener('click', function() {
-                    const phone = '5598725667925';
-                    const message = 'Olá! Vi seu site da Himalayas Tech e gostaria de conversar sobre um projeto.';
-                    const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-                    window.open(whatsappURL, '_blank');
-                });
-                
-                // Pulse animation
-                setInterval(() => {
-                    whatsappInfo.style.animation = 'none';
-                    setTimeout(() => {
-                        whatsappInfo.style.animation = 'pulse 2s ease-in-out';
-                    }, 10);
-                }, 5000);
-            }
+            // Initial progress calculation
+            updateProgressBar();
         });
-        
-        // Add CSS for ripple animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                from {
-                    transform: scale(0);
-                    opacity: 1;
-                }
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-            
-            @keyframes pulse {
-                0%, 100% {
-                    transform: scale(1);
-                }
-                50% {
-                    transform: scale(1.05);
-                }
-            }
-        `;
-        document.head.appendChild(style);
+
+        // Smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himalayas Tech - Website Creation Toolkit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ff8c42 50%, #ff6b35 75%, #f7931e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15), 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e, #ff8c42);
+            animation: shimmer 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ff6b35" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 5px 15px rgba(255, 107, 53, 0.3));
+        }
+
+        .brand-text {
+            text-align: left;
+        }
+
+        .brand-name {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+
+        .brand-tagline {
+            font-size: 1.1rem;
+            color: #cccccc;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 800px;
+        }
+
+        .checklist-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 50px 40px;
+            position: relative;
+            overflow-y: auto;
+            max-height: 800px;
+        }
+
+        .checklist-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, #ff6b35, transparent);
+        }
+
+        .form-section {
+            padding: 50px 40px;
+            background: white;
+            overflow-y: auto;
+            max-height: 800px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 35px;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            background: inherit;
+            padding: 15px 0;
+            z-index: 10;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b35, transparent);
+            border-radius: 1px;
+        }
+
+        .checklist-item {
+            margin-bottom: 25px;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid #ff6b35;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .checklist-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.02) 0%, rgba(247, 147, 30, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.15);
+        }
+
+        .checklist-item:hover::before {
+            opacity: 1;
+        }
+
+        .checklist-item h3 {
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .checklist-item ul {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .checklist-item li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            font-size: 1rem;
+            color: #4a4a4a;
+            transition: color 0.3s ease;
+        }
+
+        .checklist-item li:before {
+            content: "▶";
+            color: #ff6b35;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 8px;
+            font-size: 0.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 1rem;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafbfc;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #ff6b35;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-section-header {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 20px 25px;
+            margin: -50px -40px 35px -40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            box-shadow: 0 2px 10px rgba(255, 107, 53, 0.2);
+        }
+
+        .form-section-header:first-child {
+            margin-top: -50px;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #fafbfc;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            background: #f1f3f5;
+            border-color: #ff6b35;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            transform: scale(1.3);
+            accent-color: #ff6b35;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .upload-btn {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(26, 26, 26, 0.3);
+        }
+
+        /* Custom scrollbar */
+        .checklist-section::-webkit-scrollbar,
+        .form-section::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .checklist-section::-webkit-scrollbar-track,
+        .form-section::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .checklist-section::-webkit-scrollbar-thumb,
+        .form-section::-webkit-scrollbar-thumb {
+            background: #ff6b35;
+            border-radius: 4px;
+        }
+
+        .checklist-section::-webkit-scrollbar-thumb:hover,
+        .form-section::-webkit-scrollbar-thumb:hover {
+            background: #e55a2b;
+        }
+
+        /* Floating animation for decorative elements */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .checklist-section {
+                border-right: none;
+                border-bottom: 1px solid #e9ecef;
+                max-height: none;
+            }
+
+            .form-section {
+                max-height: none;
+            }
+            
+            .header {
+                padding: 40px 30px;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .brand-name {
+                font-size: 2.2rem;
+                text-align: center;
+            }
+            
+            .checklist-section, .form-section {
+                padding: 40px 30px;
+            }
+
+            .form-section-header {
+                margin: -40px -30px 30px -30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                border-radius: 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .brand-name {
+                font-size: 1.8rem;
+            }
+
+            .brand-tagline {
+                font-size: 0.9rem;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .checklist-section, .form-section {
+                padding: 30px 20px;
+            }
+
+            .form-section-header {
+                margin: -30px -20px 25px -20px;
+                padding: 18px 20px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .submit-btn {
+                padding: 18px 40px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .brand-name {
+                font-size: 1.5rem;
+            }
+
+            .checklist-item {
+                padding: 20px;
+            }
+
+            .form-group input, .form-group textarea, .form-group select {
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container floating">
+                <div class="logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#f7931e;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Stylized mountain peaks representing "A" shapes -->
+                        <path d="M20 75 L35 40 L50 60 L65 25 L80 55 L95 20 L95 75 Z" 
+                              fill="url(#logoGradient)" 
+                              stroke="none"/>
+                        <!-- Additional geometric elements -->
+                        <path d="M5 75 L20 75 L35 40" 
+                              fill="url(#logoGradient)" 
+                              stroke="none" 
+                              opacity="0.8"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <div class="brand-name">HIMALAYAS TECH</div>
+                    <div class="brand-tagline">DIGITAL TECHNOLOGY</div>
+                </div>
+            </div>
+            <h1>Website Creation Toolkit</h1>
+            <p>Professional checklist and client intake system for premium web development projects</p>
+        </div>
+
+        <div class="content">
+            <div class="checklist-section">
+                <h2 class="section-title">📝 Development Checklist</h2>
+                
+                <div class="checklist-item">
+                    <h3>1. Initial Information</h3>
+                    <ul>
+                        <li>Company / Brand name</li>
+                        <li>Contact details</li>
+                        <li>Business goals for the website</li>
+                        <li>Main competitors / inspirations</li>
+                    </ul>
+                </div>
+
+                <div class="checklist-item">
+                    <h3>2. Scope & Structure</h3>
+                    <ul>
+                        <li>Number of pages</li>
+                        <li>Desired sections (Home, About, Services, Contact, Blog, etc.)</li>
+                        <li>Extra features (forms, e-commerce, booking, chat, etc.)</li>
+                    </ul>
+                </div>
+
+                <div class="checklist-item">
+                    <h3>3. Design Preferences</h3>
+                    <ul>
+                        <li>Logo and brand colours</li>
+                        <li>Fonts</li>
+                        <li>Style references (links or screenshots)</li>
+                    </ul>
+                </div>
+
+                <div class="checklist-item">
+                    <h3>4. Content</h3>
+                    <ul>
+                        <li>Text content ready or to be created</li>
+                        <li>Images / videos supplied or to be sourced</li>
+                        <li>Language(s)</li>
+                    </ul>
+                </div>
+
+                <div class="checklist-item">
+                    <h3>5. Integrations</h3>
+                    <ul>
+                        <li>Social media links</li>
+                        <li>Payment gateway</li>
+                        <li>CRM / email marketing tools</li>
+                    </ul>
+                </div>
+
+                <div class="checklist-item">
+                    <h3>6. Timeline & Budget</h3>
+                    <ul>
+                        <li>Target launch date</li>
+                        <li>Stages of delivery</li>
+                        <li>Payment milestones</li>
+                    </ul>
+                </div>
+
+                <div class="checklist-item">
+                    <h3>7. Feedback & Approval</h3>
+                    <ul>
+                        <li>Who will review each stage</li>
+                        <li>Deadlines for feedback</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="section-title">📋 Client Intake Form</h2>
+
+                <form id="clientForm">
+                    <div class="form-section-header">Section 1 – Contact Information</div>
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                    </div>
+
+                    <div class="form-section-header">Section 2 – Business Information</div>
+                    <div class="form-group">
+                        <label for="company">Company Name *</label>
+                        <input type="text" id="company" name="company" required placeholder="Your company name">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Business Description *</label>
+                        <textarea id="description" name="description" rows="4" required placeholder="Tell us about your business, what you do, and your target market..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="goal">Primary Website Goal *</label>
+                        <textarea id="goal" name="goal" rows="3" required placeholder="What do you want to achieve with your website? (e.g., generate leads, sell products, build brand awareness...)"></textarea>
+                    </div>
+
+                    <div class="form-section-header">Section 3 – Design & Branding</div>
+                    <div class="form-group">
+                        <label for="colors">Brand Colors</label>
+                        <input type="text" id="colors" name="colors" placeholder="e.g., Primary: #FF6B35, Secondary: #F7931E, or describe preferred colors">
+                    </div>
+                    <div class="form-group">
+                        <label for="logo">Logo Upload</label>
+                        <input type="file" id="logo" name="logo" accept="image/*" class="upload-btn">
+                    </div>
+                    <div class="form-group">
+                        <label for="references">Website References</label>
+                        <textarea id="references" name="references" rows="3" placeholder="Share URLs of websites you like and explain what appeals to you about them..."></textarea>
+                    </div>
+
+                    <div class="form-section-header">Section 4 – Required Features</div>
+                    <div class="form-group">
+                        <label>Select all features you need:</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="store" name="features" value="store">
+                                <label for="store">E-commerce Store</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="booking" name="features" value="booking">
+                                <label for="booking">Online Booking System</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="blog" name="features" value="blog">
+                                <label for="blog">Blog/News Section</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="contact" name="features" value="contact">
+                                <label for="contact">Contact Forms</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="gallery" name="features" value="gallery">
+                                <label for="gallery">Photo Gallery</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="seo" name="features" value="seo">
+                                <label for="seo">SEO Optimization</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label for="other">Additional Features</label>
+                            <input type="text" id="other" name="other" placeholder="Specify any other features or functionality you need...">
+                        </div>
+                    </div>
+
+                    <div class="form-section-header">Section 5 – Project Timeline & Investment</div>
+                    <div class="form-group">
+                        <label for="launch">Desired Launch Date</label>
+                        <input type="date" id="launch" name="launch">
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Project Investment Range *</label>
+                        <select id="budget" name="budget" required>
+                            <option value="">Please select your budget range</option>
+                            <option value="under-2k">Under $2,000</option>
+                            <option value="2k-5k">$2,000 - $5,000</option>
+                            <option value="5k-10k">$5,000 - $10,000</option>
+                            <option value="10k-25k">$10,000 - $25,000</option>
+                            <option value="25k-50k">$25,000 - $50,000</option>
+                            <option value="over-50k">Over $50,000</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Submit Project Details
+                        <span style="margin-left: 10px;">🚀</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Enhanced form submission with better UX
+        document.getElementById('clientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = 'Processing... ⏳';
+            submitBtn.disabled = true;
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            
+            // Handle regular inputs and checkboxes
+            for (let [key, value] of formData.entries()) {
+                if (key === 'features') {
+                    if (!data.features) data.features = [];
+                    data.features.push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Simulate processing time
+            setTimeout(() => {
+                // Success state
+                submitBtn.innerHTML = 'Submitted Successfully! ✅';
+                submitBtn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+                
+                // Show success message
+                alert(`Thank you ${data.name || 'for your submission'}! Your project details have been received. Our Himalayas Tech team will review your requirements and contact you within 24 hours.`);
+                
+                // Log the collected data (for demonstration)
+                console.log('Client project data collected by Himalayas Tech:', data);
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    this.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '';
+                }, 3000);
+            }, 2000);
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe checklist items for smooth reveal
+        document.querySelectorAll('.checklist-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'all 0.6s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

@@ -808,8 +808,8 @@
         }
 
         .photo-item {
-            width: 60px;
-            height: 60px;
+            width: 150px;
+            height: 100px;
             border-radius: 8px;
             overflow: hidden;
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -933,6 +933,20 @@
                 height: 350px;
             }
         }
+
+
+
+        .photo-gallery {
+  display: flex;
+  gap: 10px;
+}
+.photo-item img {
+  width: 150px;  /* adjust as needed */
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
     </style>
 
     <div class="container">
@@ -965,13 +979,24 @@
             </div>
 
             <!-- Photo Gallery -->
-            <div class="photo-gallery" id="photoGallery">
-                <div class="photo-item" id="photo1"><span>🏔️</span></div>
-                <div class="photo-item" id="photo2"><span>💻</span></div>
-                <div class="photo-item" id="photo3"><span>🎨</span></div>
-                <div class="photo-item" id="photo4"><span>🚀</span></div>
-                <div class="photo-item" id="photo5"><span>⚡</span></div>
-            </div>
+           <div class="photo-gallery" id="photoGallery"> 
+  <div class="photo-item" id="photo1">
+    <img src="/1.png" alt="Mountain" />
+  </div>
+  <div class="photo-item" id="photo2">
+    <img src="/Screenshot__167_-removebg-preview.png" alt="Laptop" />
+  </div>
+  <div class="photo-item" id="photo3">
+    <img src="images/art.jpg" alt="Art" />
+  </div>
+  <div class="photo-item" id="photo4">
+    <img src="images/rocket.jpg" alt="Rocket" />
+  </div>
+  <div class="photo-item" id="photo5">
+    <img src="images/lightning.jpg" alt="Lightning" />
+  </div>
+</div>
+
         </div>
 
        

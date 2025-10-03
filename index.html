@@ -12,9 +12,8 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    
     <style>
         :root {
             --primary-yellow: #ffc107;
@@ -1436,7 +1435,7 @@
             height: 350px;
         }
         #map {
-            height: 450px;
+        
             border-radius: 5px;
         }
         .marker-popup {
@@ -1451,184 +1450,435 @@
 </head>
 <body>
   
-
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
     <script>
-        // Line Chart - Inspection Results Trend
-        const lineCtx = document.getElementById('lineChart').getContext('2d');
-        const lineChart = new Chart(lineCtx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-                datasets: [{
-                    label: 'Normal',
-                    data: [145, 152, 168, 175, 180, 195, 202, 215, 225, 238],
-                    borderColor: '#4caf50',
-                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
-                    tension: 0.4,
-                    fill: true
-                }, {
-                    label: 'Warning',
-                    data: [25, 28, 32, 30, 35, 38, 42, 45, 48, 52],
-                    borderColor: '#ffa000',
-                    backgroundColor: 'rgba(255, 160, 0, 0.1)',
-                    tension: 0.4,
-                    fill: true
-                }, {
-                    label: 'Critical',
-                    data: [8, 12, 10, 15, 18, 14, 16, 20, 22, 18],
-                    borderColor: '#e53935',
-                    backgroundColor: 'rgba(229, 57, 53, 0.1)',
-                    tension: 0.4,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                    },
-                    tooltip: {
-                        mode: 'index',
-                        intersect: false,
-                    }
+        // Wait for page to fully load
+        window.addEventListener('load', function() {
+            
+            // 1. LINE CHART - Inspection Results Trend
+            const lineCtx = document.getElementById('lineChart').getContext('2d');
+            const lineChart = new Chart(lineCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                    datasets: [{
+                        label: 'Normal',
+                        data: [145, 152, 168, 175, 180, 195, 202, 215, 225, 238],
+                        borderColor: '#4caf50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Warning',
+                        data: [25, 28, 32, 30, 35, 38, 42, 45, 48, 52],
+                        borderColor: '#ffa000',
+                        backgroundColor: 'rgba(255, 160, 0, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Critical',
+                        data: [8, 12, 10, 15, 18, 14, 16, 20, 22, 18],
+                        borderColor: '#e53935',
+                        backgroundColor: 'rgba(229, 57, 53, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
                         }
                     },
-                    x: {
-                        grid: {
-                            display: false
-                        }
-                    }
-                },
-                interaction: {
-                    mode: 'nearest',
-                    axis: 'x',
-                    intersect: false
-                }
-            }
-        });
-
-        // Pie Chart - Issue Types Distribution
-        const pieCtx = document.getElementById('pieChart').getContext('2d');
-        const pieChart = new Chart(pieCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Overheating', 'Corona Discharge', 'Structural Damage', 'Vegetation', 'Corrosion', 'Other'],
-                datasets: [{
-                    data: [42, 28, 15, 8, 5, 2],
-                    backgroundColor: [
-                        '#e53935',
-                        '#ffa000',
-                        '#1976d2',
-                        '#43a047',
-                        '#8e24aa',
-                        '#757575'
-                    ],
-                    borderWidth: 2,
-                    borderColor: '#fff'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'right',
-                        labels: {
-                            padding: 15,
-                            font: {
-                                size: 12
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
                             }
-                        }
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                const label = context.label || '';
-                                const value = context.parsed || 0;
-                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                const percentage = ((value / total) * 100).toFixed(1);
-                                return label + ': ' + value + ' (' + percentage + '%)';
+                        },
+                        x: {
+                            grid: {
+                                display: false
                             }
                         }
                     }
                 }
-            }
-        });
-
-        // Leaflet Map - Inspection Locations
-        const map = L.map('map').setView([28.5, 77.0], 10);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors',
-            maxZoom: 18
-        }).addTo(map);
-
-        // Sample inspection locations with different statuses
-        const locations = [
-            { lat: 28.45, lng: 77.05, name: 'North District - Sector 7', status: 'warning', temp: '78.5°C', type: 'Thermal', id: 'INS-2023-1458' },
-            { lat: 28.55, lng: 77.15, name: 'East District - Main Line', status: 'normal', temp: '42.1°C', type: 'Visual', id: 'INS-2023-1457' },
-            { lat: 28.35, lng: 76.95, name: 'South District - Junction B', status: 'critical', temp: '92.7°C', type: 'Corona', id: 'INS-2023-1456' },
-            { lat: 28.50, lng: 76.85, name: 'West District - Substation 3', status: 'normal', temp: '39.2°C', type: 'Lidar', id: 'INS-2023-1455' },
-            { lat: 28.60, lng: 77.10, name: 'North District - Tower 42', status: 'warning', temp: '67.8°C', type: 'Thermal', id: 'INS-2023-1454' },
-            { lat: 28.42, lng: 77.20, name: 'East District - Sector 12', status: 'normal', temp: '45.3°C', type: 'Visual', id: 'INS-2023-1453' },
-            { lat: 28.38, lng: 77.08, name: 'South District - Tower 18', status: 'critical', temp: '88.9°C', type: 'Thermal', id: 'INS-2023-1452' },
-            { lat: 28.52, lng: 76.92, name: 'West District - Line 5', status: 'warning', temp: '72.4°C', type: 'Corona', id: 'INS-2023-1451' }
-        ];
-
-        // Custom marker icons for different statuses
-        const getMarkerColor = (status) => {
-            switch(status) {
-                case 'critical': return '#e53935';
-                case 'warning': return '#ffa000';
-                case 'normal': return '#43a047';
-                default: return '#1976d2';
-            }
-        };
-
-        const createCustomIcon = (color) => {
-            return L.divIcon({
-                className: 'custom-marker',
-                html: `<div style="background-color: ${color}; width: 24px; height: 24px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>`,
-                iconSize: [24, 24],
-                iconAnchor: [12, 24],
-                popupAnchor: [0, -24]
             });
-        };
 
-        // Add markers to map
-        locations.forEach(loc => {
-            const marker = L.marker([loc.lat, loc.lng], {
-                icon: createCustomIcon(getMarkerColor(loc.status))
+            // 2. PIE CHART - Issue Types Distribution
+            const pieCtx = document.getElementById('pieChart').getContext('2d');
+            const pieChart = new Chart(pieCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Overheating', 'Corona Discharge', 'Structural Damage', 'Vegetation', 'Corrosion', 'Other'],
+                    datasets: [{
+                        data: [42, 28, 15, 8, 5, 2],
+                        backgroundColor: [
+                            '#e53935',
+                            '#ffa000',
+                            '#1976d2',
+                            '#43a047',
+                            '#8e24aa',
+                            '#757575'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                padding: 15,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return label + ': ' + value + ' (' + percentage + '%)';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 3. MAP - Inspection Locations
+            console.log('Initializing map...');
+            
+            // Initialize map centered on Panipat area
+            const map = L.map('map', {
+                center: [29.39, 76.97],
+                zoom: 11,
+                zoomControl: true
+            });
+
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
             }).addTo(map);
 
-            const statusColor = getMarkerColor(loc.status);
-            const statusText = loc.status.charAt(0).toUpperCase() + loc.status.slice(1);
-            
-            marker.bindPopup(`
-                <div class="marker-popup">
-                    <strong>${loc.name}</strong>
-                    <div><b>ID:</b> ${loc.id}</div>
-                    <div><b>Type:</b> ${loc.type}</div>
-                    <div><b>Temperature:</b> ${loc.temp}</div>
-                    <div><b>Status:</b> <span style="color: ${statusColor}; font-weight: bold;">${statusText}</span></div>
-                </div>
-            `);
-        });
+            // Sample inspection locations
+            const locations = [
+                { lat: 29.39, lng: 76.97, name: 'North District - Sector 7', status: 'warning', temp: '78.5°C', type: 'Thermal', id: 'INS-2023-1458' },
+                { lat: 29.42, lng: 77.00, name: 'East District - Main Line', status: 'normal', temp: '42.1°C', type: 'Visual', id: 'INS-2023-1457' },
+                { lat: 29.36, lng: 76.94, name: 'South District - Junction B', status: 'critical', temp: '92.7°C', type: 'Corona', id: 'INS-2023-1456' },
+                { lat: 29.40, lng: 76.90, name: 'West District - Substation 3', status: 'normal', temp: '39.2°C', type: 'Lidar', id: 'INS-2023-1455' },
+                { lat: 29.44, lng: 76.98, name: 'North District - Tower 42', status: 'warning', temp: '67.8°C', type: 'Thermal', id: 'INS-2023-1454' },
+                { lat: 29.37, lng: 77.02, name: 'East District - Sector 12', status: 'normal', temp: '45.3°C', type: 'Visual', id: 'INS-2023-1453' },
+                { lat: 29.35, lng: 76.96, name: 'South District - Tower 18', status: 'critical', temp: '88.9°C', type: 'Thermal', id: 'INS-2023-1452' },
+                { lat: 29.41, lng: 76.92, name: 'West District - Line 5', status: 'warning', temp: '72.4°C', type: 'Corona', id: 'INS-2023-1451' }
+            ];
 
-        // Fit map to show all markers
-        const group = L.featureGroup(locations.map(loc => L.marker([loc.lat, loc.lng])));
-        map.fitBounds(group.getBounds().pad(0.1));
+            // Get marker color based on status
+            const getMarkerColor = (status) => {
+                switch(status) {
+                    case 'critical': return 'red';
+                    case 'warning': return 'orange';
+                    case 'normal': return 'green';
+                    default: return 'blue';
+                }
+            };
+
+            // Add markers to map
+            locations.forEach(loc => {
+                const color = getMarkerColor(loc.status);
+                const statusText = loc.status.charAt(0).toUpperCase() + loc.status.slice(1);
+                
+                // Create circle marker
+                const marker = L.circleMarker([loc.lat, loc.lng], {
+                    radius: 8,
+                    fillColor: color,
+                    color: '#fff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map);
+
+                // Add popup
+                marker.bindPopup(`
+                    <div class="marker-popup">
+                        <strong>${loc.name}</strong>
+                        <div><b>ID:</b> ${loc.id}</div>
+                        <div><b>Type:</b> ${loc.type}</div>
+                        <div><b>Temperature:</b> ${loc.temp}</div>
+                        <div><b>Status:</b> <span style="color: ${color}; font-weight: bold;">${statusText}</span></div>
+                    </div>
+                `);
+            });
+
+            console.log('Map initialized successfully with', locations.length, 'markers');
+
+            // Force map to refresh after a short delay
+            setTimeout(function() {
+                map.invalidateSize();
+            }, 100);
+        });
     </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerScan Charts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        h2 {
+            margin-top: 0;
+            color: #4a4a4a;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+        #line-chart-container {
+            height: 350px;
+            position: relative;
+        }
+        #pie-chart-container {
+            height: 350px;
+            position: relative;
+        }
+        #map {
+            
+            width: 100%;
+            border-radius: 5px;
+            z-index: 1;
+        }
+        .leaflet-container {
+            height: 100%;
+            width: 100%;
+        }
+        .marker-popup {
+            font-size: 12px;
+        }
+        .marker-popup strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #4a4a4a;
+        }
+    </style>
+</head>
+<body>
+    
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script>
+        // Wait for page to fully load
+        window.addEventListener('load', function() {
+            
+            // 1. LINE CHART - Inspection Results Trend
+            const lineCtx = document.getElementById('lineChart').getContext('2d');
+            const lineChart = new Chart(lineCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                    datasets: [{
+                        label: 'Normal',
+                        data: [145, 152, 168, 175, 180, 195, 202, 215, 225, 238],
+                        borderColor: '#4caf50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Warning',
+                        data: [25, 28, 32, 30, 35, 38, 42, 45, 48, 52],
+                        borderColor: '#ffa000',
+                        backgroundColor: 'rgba(255, 160, 0, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Critical',
+                        data: [8, 12, 10, 15, 18, 14, 16, 20, 22, 18],
+                        borderColor: '#e53935',
+                        backgroundColor: 'rgba(229, 57, 53, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 2. PIE CHART - Issue Types Distribution
+            const pieCtx = document.getElementById('pieChart').getContext('2d');
+            const pieChart = new Chart(pieCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Overheating', 'Corona Discharge', 'Structural Damage', 'Vegetation', 'Corrosion', 'Other'],
+                    datasets: [{
+                        data: [42, 28, 15, 8, 5, 2],
+                        backgroundColor: [
+                            '#e53935',
+                            '#ffa000',
+                            '#1976d2',
+                            '#43a047',
+                            '#8e24aa',
+                            '#757575'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                padding: 15,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return label + ': ' + value + ' (' + percentage + '%)';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 3. MAP - Inspection Locations
+            console.log('Initializing map...');
+            
+            // Initialize map centered on Panipat area
+            const map = L.map('map', {
+                center: [29.39, 76.97],
+                zoom: 11,
+                zoomControl: true
+            });
+
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Sample inspection locations
+            const locations = [
+                { lat: 29.39, lng: 76.97, name: 'North District - Sector 7', status: 'warning', temp: '78.5°C', type: 'Thermal', id: 'INS-2023-1458' },
+                { lat: 29.42, lng: 77.00, name: 'East District - Main Line', status: 'normal', temp: '42.1°C', type: 'Visual', id: 'INS-2023-1457' },
+                { lat: 29.36, lng: 76.94, name: 'South District - Junction B', status: 'critical', temp: '92.7°C', type: 'Corona', id: 'INS-2023-1456' },
+                { lat: 29.40, lng: 76.90, name: 'West District - Substation 3', status: 'normal', temp: '39.2°C', type: 'Lidar', id: 'INS-2023-1455' },
+                { lat: 29.44, lng: 76.98, name: 'North District - Tower 42', status: 'warning', temp: '67.8°C', type: 'Thermal', id: 'INS-2023-1454' },
+                { lat: 29.37, lng: 77.02, name: 'East District - Sector 12', status: 'normal', temp: '45.3°C', type: 'Visual', id: 'INS-2023-1453' },
+                { lat: 29.35, lng: 76.96, name: 'South District - Tower 18', status: 'critical', temp: '88.9°C', type: 'Thermal', id: 'INS-2023-1452' },
+                { lat: 29.41, lng: 76.92, name: 'West District - Line 5', status: 'warning', temp: '72.4°C', type: 'Corona', id: 'INS-2023-1451' }
+            ];
+
+            // Get marker color based on status
+            const getMarkerColor = (status) => {
+                switch(status) {
+                    case 'critical': return 'red';
+                    case 'warning': return 'orange';
+                    case 'normal': return 'green';
+                    default: return 'blue';
+                }
+            };
+
+            // Add markers to map
+            locations.forEach(loc => {
+                const color = getMarkerColor(loc.status);
+                const statusText = loc.status.charAt(0).toUpperCase() + loc.status.slice(1);
+                
+                // Create circle marker
+                const marker = L.circleMarker([loc.lat, loc.lng], {
+                    radius: 8,
+                    fillColor: color,
+                    color: '#fff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map);
+
+                // Add popup
+                marker.bindPopup(`
+                    <div class="marker-popup">
+                        <strong>${loc.name}</strong>
+                        <div><b>ID:</b> ${loc.id}</div>
+                        <div><b>Type:</b> ${loc.type}</div>
+                        <div><b>Temperature:</b> ${loc.temp}</div>
+                        <div><b>Status:</b> <span style="color: ${color}; font-weight: bold;">${statusText}</span></div>
+                    </div>
+                `);
+            });
+
+            console.log('Map initialized successfully with', locations.length, 'markers');
+
+            // Force map to refresh after a short delay
+            setTimeout(function() {
+                map.invalidateSize();
+            }, 100);
+        });
+    </script>
 </body>
 </html>
